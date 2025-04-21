@@ -136,7 +136,7 @@ export default function Gallery() {
           onSlide={(newIndex) => setCurrentIndex(newIndex)}
           showPlayButton={false}
           showFullscreenButton={false}
-          slideOnWheel={false}
+          slideOnWheel={true}
           items={images}
         />
       </motion.div>
