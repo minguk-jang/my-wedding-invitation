@@ -140,7 +140,7 @@ const Footer = styled("footer", {
 });
 
 const CenteredContainer = styled("div", {
-  maxWidth: "480px",
+  maxWidth: "560px",
   margin: "0 auto",
   padding: "0 16px",
   "@media (max-width: 768px)": {
