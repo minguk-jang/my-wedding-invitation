@@ -58,17 +58,21 @@
 //   );
 // }
 
-import React, { useEffect, useRef, useState } from "react";
-import ImageGallery from "react-image-gallery";
-import { Divider } from "antd";
+import React from "react";
 import { styled } from "@stitches/react";
+import { Divider } from "antd";
 import { motion } from "framer-motion";
-import "react-image-gallery/styles/css/image-gallery.css";
+import {
+  PhotoProvider,
+  PhotoView,
+} from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
 
 const Wrapper = styled("div", {
   background: "#efebe9",
   backgroundImage: "url(./assets/GroovePaper.png)",
   width: "100%",
+  paddingBottom: 40,
 });
 
 const Title = styled("p", {
@@ -78,48 +82,30 @@ const Title = styled("p", {
   marginBottom: 0,
 });
 
+const ImageGrid = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(2, 1fr)",
+  gap: "12px",
+  padding: "0 24px",
+});
+
+const StyledImage = styled("img", {
+  width: "100%",
+  borderRadius: "8px",
+  cursor: "pointer",
+});
+
 const images = [
-  { original: "./images/fig1.jpeg", thumbnail: "./images/fig1.jpeg" },
-  { original: "./images/fig2.jpeg", thumbnail: "./images/fig2.jpeg" },
-  { original: "./images/fig3.jpeg", thumbnail: "./images/fig3.jpeg" },
-  { original: "./images/fig4.jpeg", thumbnail: "./images/fig4.jpeg" },
+  "./images/fig1.jpeg",
+  "./images/fig2.jpeg",
+  "./images/fig3.jpeg",
+  "./images/fig4.jpeg",
 ];
 
 export default function Gallery() {
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const galleryApiRef = useRef<any>(null);
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  useEffect(() => {
-    const galleryEl = galleryRef.current;
-
-    const handleWheel = (e: WheelEvent) => {
-      if (!galleryEl || !galleryEl.contains(e.target as Node)) return;
-
-      // 휠 방향 감지
-      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
-
-      if (isHorizontal) {
-        e.preventDefault(); // 페이지 스크롤 막기
-        if (e.deltaX > 0) {
-          galleryApiRef.current?.slideToIndex(currentIndex + 1);
-        } else {
-          galleryApiRef.current?.slideToIndex(currentIndex - 1);
-        }
-      }
-    };
-
-    window.addEventListener("wheel", handleWheel, { passive: false });
-
-    return () => {
-      window.removeEventListener("wheel", handleWheel);
-    };
-  }, [currentIndex]);
-
   return (
     <Wrapper>
       <motion.div
-        ref={galleryRef}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, amount: 0.2 }}
@@ -128,17 +114,16 @@ export default function Gallery() {
         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
           <Title>우리의 아름다운 순간</Title>
         </Divider>
-        <ImageGallery
-          ref={(ref) => {
-            galleryApiRef.current = ref;
-          }}
-          startIndex={currentIndex}
-          onSlide={(newIndex) => setCurrentIndex(newIndex)}
-          showPlayButton={false}
-          showFullscreenButton={false}
-          slideOnWheel={true}
-          items={images}
-        />
+
+        <PhotoProvider loop>
+          <ImageGrid>
+            {images.map((src, index) => (
+              <PhotoView key={index} src={src}>
+                <StyledImage src={src} alt={`fig${index + 1}`} />
+              </PhotoView>
+            ))}
+          </ImageGrid>
+        </PhotoProvider>
       </motion.div>
     </Wrapper>
   );
