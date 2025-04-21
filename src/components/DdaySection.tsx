@@ -12,7 +12,7 @@ const Wrapper = styled('div', {
   background: '#efebe9',
   backgroundImage: 'url(./assets/GroovePaper.png)',
   width: '100%',
-  padding: '20px 20px 50px', // 위쪽 여백 줄임
+//   padding: '20px 50px', // 위쪽 여백 줄임
   textAlign: 'center',
   fontFamily: "'Noto Serif KR', serif",
 });
