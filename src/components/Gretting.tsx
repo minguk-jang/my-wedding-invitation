@@ -143,13 +143,23 @@ const Content = styled("div", {
   textAlign: "center",
 });
 
+// const PhotoContainer = styled("div", {
+//   display: "flex",
+//   justifyContent: "center",
+//   alignItems: "center",
+//   gap: "2rem",
+//   marginTop: "2rem",
+//   flexWrap: "wrap",
+// });
 const PhotoContainer = styled("div", {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   gap: "2rem",
   marginTop: "2rem",
-  flexWrap: "wrap",
+  flexWrap: "nowrap", // ✅ 줄바꿈 없게 고정
+  overflowX: "auto", // ✅ 좁은 화면에서도 좌우 스크롤로 대응
+  padding: "0 1rem", // ✅ 스크롤 생길 때 살짝 여유
 });
 
 const Person = styled("div", {
