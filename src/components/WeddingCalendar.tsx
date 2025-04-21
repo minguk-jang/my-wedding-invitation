@@ -217,6 +217,15 @@ const WeddingCalendar = () => {
           defaultView="month"
           showNavigation={false}
           calendarType="gregory"
+          onActiveStartDateChange={({ activeStartDate, value, view }) => {
+            // 강제로 날짜 고정
+            setTimeout(() => {
+              document.querySelector('.react-calendar')?.dispatchEvent(
+                new CustomEvent('force-reset', { bubbles: true })
+              );
+            }, 0);
+          }}
+          activeStartDate={weddingDate}
           tileClassName={({ date, view }) => {
             if (
               view === 'month' &&
@@ -252,8 +261,8 @@ const WeddingCalendar = () => {
           display: flex;
           justify-content: center;
           width: 100%;
-          max-width: 200px; /* ✅ 달력 크기 제한 */
-          max-height: 200px;
+          max-width: 300px; /* ✅ 달력 크기 제한 */
+          max-height: 300px;
         }
 
         :global(.react-calendar) {
@@ -274,7 +283,7 @@ const WeddingCalendar = () => {
         }
 
         :global(.react-calendar__tile abbr) {
-          font-size: 0.65rem; /* ✅ 숫자 폰트 크기 줄이기 */
+          font-size: 0.8rem; /* ✅ 숫자 폰트 크기 줄이기 */
           font-family: 'Nanum Myeongjo', serif;
         }
 
@@ -291,10 +300,10 @@ const WeddingCalendar = () => {
           background: #ff6b6b;
           color: white;
           border-radius: 50%;
-          width: 20px;
-          height: 20px;
-          line-height: 20px;
-          font-size: 0.65rem;
+          width: 25px;
+          height: 25px;
+          line-height: 25px;
+          font-size: 0.8rem;
           font-weight: bold;
           text-align: center;
         }
