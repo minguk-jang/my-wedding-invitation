@@ -58,7 +58,7 @@
 //   );
 // }
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import ImageGallery from "react-image-gallery";
 import { Divider } from "antd";
 import { styled } from "@stitches/react";
@@ -86,29 +86,35 @@ const images = [
 ];
 
 export default function Gallery() {
-  const galleryRef = useRef(null);
-  const galleryInstanceRef = useRef(null); // gallery instance
+  const galleryRef = useRef<HTMLDivElement>(null);
+  const galleryApiRef = useRef<any>(null);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   useEffect(() => {
-    const galleryElement = galleryRef.current;
+    const galleryEl = galleryRef.current;
 
     const handleWheel = (e: WheelEvent) => {
-      if (!galleryElement || !galleryElement.contains(e.target as Node)) return;
+      if (!galleryEl || !galleryEl.contains(e.target as Node)) return;
 
-      if (Math.abs(e.deltaX) > Math.abs(e.deltaY)) {
-        // 👉 좌우 스크롤만 슬라이드 작동
-        e.preventDefault(); // 상하 스크롤은 막지 않음
+      // 휠 방향 감지
+      const isHorizontal = Math.abs(e.deltaX) > Math.abs(e.deltaY);
+
+      if (isHorizontal) {
+        e.preventDefault(); // 페이지 스크롤 막기
         if (e.deltaX > 0) {
-          galleryInstanceRef.current?.slideRight();
+          galleryApiRef.current?.slideToIndex(currentIndex + 1);
         } else {
-          galleryInstanceRef.current?.slideLeft();
+          galleryApiRef.current?.slideToIndex(currentIndex - 1);
         }
       }
     };
 
     window.addEventListener("wheel", handleWheel, { passive: false });
-    return () => window.removeEventListener("wheel", handleWheel);
-  }, []);
+
+    return () => {
+      window.removeEventListener("wheel", handleWheel);
+    };
+  }, [currentIndex]);
 
   return (
     <Wrapper>
@@ -124,11 +130,13 @@ export default function Gallery() {
         </Divider>
         <ImageGallery
           ref={(ref) => {
-            galleryInstanceRef.current = ref;
+            galleryApiRef.current = ref;
           }}
+          startIndex={currentIndex}
+          onSlide={(newIndex) => setCurrentIndex(newIndex)}
           showPlayButton={false}
           showFullscreenButton={false}
-          slideOnWheel={false} // 직접 제어할 거니까 끔
+          slideOnWheel={false}
           items={images}
         />
       </motion.div>
