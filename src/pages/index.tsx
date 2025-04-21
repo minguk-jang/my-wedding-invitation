@@ -8,6 +8,14 @@ import Script from "next/script";
 
 const Title = dynamic(() => import("@/components/Title"), { ssr: false });
 const Gretting = dynamic(() => import("@/components/Gretting"), { ssr: false });
+const WeddingCalendar = dynamic(
+  () => import("@/components/WeddingCalendar"),
+  { ssr: false }
+);
+const DdaySection = dynamic(
+  () => import("@/components/DdaySection"),
+  { ssr: false }
+);
 const Gallery = dynamic(() => import("@/components/Gallery"), { ssr: false });
 const Location = dynamic(() => import("@/components/Location"), { ssr: false });
 const CongratulatoryMoney = dynamic(
@@ -44,33 +52,41 @@ export default function Home() {
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta property="og:type" content="website" />
-        <meta content="○○○❤○○○ 결혼식에 초대합니다" name="Title" />
+        <meta content="장민국❤이주연 결혼식에 초대합니다" name="Title" />
         <meta
-          content="○○○○년 ○○월 ○○일 ○요일 오전 ○○시 ○○분"
+          content="2025년 08월 23일 토요일 낮 12시 30분"
           name="Description"
         />
-        <meta content="○○○○년 ○○월 ○○일 ○요일 오전 ○○시 ○○분" name="Keyword" />
-        <meta property="og:title" content="○○○❤○○○ 결혼식에 초대합니다" />
+        <meta content="2025년 08월 23일 토요일 낮 12시 30분" name="Keyword" />
+        <meta property="og:title" content="장민국❤이주연 결혼식에 초대합니다" />
         <meta
           property="og:description"
-          content="○○○○년 ○○월 ○○일 ○요일 오전 ○○시 ○○분"
+          content="2025년 08월 23일 토요일 낮 12시 30분"
         />
         <meta
           property="og:url"
           content="https://kyuhyuk.kr/wedding-invitation"
         />
         <meta name="theme-color" content="#BCAAA4" />
-        <title>○○○❤○○○ 결혼식에 초대합니다</title>
+        <title>장민국❤이주연 결혼식에 초대합니다</title>
+        <meta name="description" content="2025년 8월 23일 토요일 낮 12시 30분" />
+        <meta name="keywords" content="결혼식, 청첩장, 모바일 청첩장" />
+        <meta property="og:title" content="우리의 결혼식에 초대합니다" />
+        <meta property="og:description" content="2025년 8월 23일 토요일 낮 12시 30분" />
+        <meta property="og:url" content="https://mgjang.com" />
+        {/* <meta name="theme-color" content="#BCAAA4" /> */}
       </Head>
       <main className={`${notoSansKR.className}`}>
         <Script src="https://developers.kakao.com/sdk/js/kakao.min.js"></Script>
         <Title data={JsonData} />
         <Gretting data={JsonData} />
+        <WeddingCalendar />
+        <DdaySection weddingDate={new Date("2025-08-23T12:30:00")} />
         <Gallery />
         <Location />
         <CongratulatoryMoney data={JsonData} />
         <Share data={JsonData} />
-        <Footer>Copyright © 2021 KyuHyuk Lee</Footer>
+        <Footer>Copyright © 2025 Minguk Jang</Footer>
       </main>
     </>
   );

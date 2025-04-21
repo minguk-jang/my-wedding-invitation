@@ -3,6 +3,7 @@ import { styled } from "@stitches/react";
 import { Button, Divider, message } from "antd";
 import { useEffect, useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
+import { motion } from "framer-motion"; // Framer Motion 추가
 
 declare global {
   interface Window {
@@ -19,7 +20,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "2vh",
+  fontSize: "3vh",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
@@ -102,28 +103,35 @@ export default function Share({ data }: ShareProps) {
 
   return (
     <Wrapper>
-      <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-        <Title>청첩장 공유하기</Title>
-      </Divider>
-      <KakaoTalkShareButton
-        style={{ margin: 8 }}
-        icon={<MessageFilled />}
-        id="sendKakao"
-        size="large"
-        onClick={() => setShareCount(shareCount + 1)}
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1.2 }}
       >
-        카카오톡으로 공유하기
-      </KakaoTalkShareButton>
-      <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
-        <LinkShareButton
+        <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
+          <Title>청첩장 공유하기</Title>
+        </Divider>
+        <KakaoTalkShareButton
           style={{ margin: 8 }}
-          icon={<LinkOutlined />}
+          icon={<MessageFilled />}
+          id="sendKakao"
           size="large"
-          onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
+          onClick={() => setShareCount(shareCount + 1)}
         >
-          링크로 공유하기
-        </LinkShareButton>
-      </CopyToClipboard>
+          카카오톡으로 공유하기
+        </KakaoTalkShareButton>
+        <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
+          <LinkShareButton
+            style={{ margin: 8 }}
+            icon={<LinkOutlined />}
+            size="large"
+            onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
+          >
+            링크로 공유하기
+          </LinkShareButton>
+        </CopyToClipboard>
+      </motion.div>
     </Wrapper>
   );
 }
