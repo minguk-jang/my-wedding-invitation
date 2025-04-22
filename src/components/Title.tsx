@@ -1,5 +1,5 @@
+import React, { useEffect, useState, useRef } from "react";
 import { styled } from "@stitches/react";
-import { Divider } from "antd";
 
 const Layout = styled("div", {
   width: "100%",
@@ -9,28 +9,27 @@ const Layout = styled("div", {
   position: "relative",
 });
 
+const ImageBackground = styled("div", {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundImage: "url('./images/fig3.jpeg')", // 너가 설정한 배경 경로
+  backgroundSize: "cover",
+  backgroundPosition: "center center",
+  opacity: 0.9,
+  zIndex: 0,
+});
+
 const TitleWrapper = styled("div", {
   position: "absolute",
   width: "100%",
-  top: "20%",
+  top: "10%",
   left: "50%",
-  transform: "translate(-50%, -50%)",
+  transform: "translateX(-50%)",
   textAlign: "center",
-  textShadow: "-1px 0 #9e9e9e, 0 1px #9e9e9e, 1px 0 #9e9e9e, 0 -1px #9e9e9e",
-  animation: "fadein 3s",
-  "-moz-animation": "fadein 3s" /* Firefox */,
-  "-webkit-animation": "fadein 3s" /* Safari and Chrome */,
-  "-o-animation": "fadein 3s" /* Opera */,
-});
-
-const VideoBackground = styled("video", {
-  backgroundColor: "#aeb8b3 !important",
-  opacity: 0.9,
-  objectFit: "cover",
-  objectPosition: "center center",
-  width: "100%",
-  height: "100%",
-  minHeight: 480,
+  zIndex: 1,
 });
 
 const WeddingInvitation = styled("p", {
@@ -52,27 +51,84 @@ const Schedule = styled("p", {
   marginBottom: 24,
 });
 
+// ✅ 타이핑 오버레이
+const IntroOverlay = styled("div", {
+  position: "absolute",
+  top: 0,
+  left: 0,
+  width: "100%",
+  height: "100%",
+  backgroundColor: "rgba(0, 0, 0, 0.6)", // 반투명하게!
+  color: "#fff",
+  zIndex: 2,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  fontSize: "3vh",
+  fontFamily: "'Noto Serif KR', serif",
+  letterSpacing: "0.1em",
+  transition: "opacity 1s ease",
+});
+
+const TypingTextWrapper = styled("div", {
+  fontFamily: "'Noto Serif KR', serif",
+  fontSize: "3vh",
+  color: "#fff",
+  letterSpacing: "0.1em",
+});
+
+const TypingText: React.FC<{ text: string; onDone: () => void }> = ({ text, onDone }) => {
+  const [displayedText, setDisplayedText] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      if (i < text.length) {
+        const char = text[i]; // 현재 문자를 별도의 변수에 저장
+        setDisplayedText((prev) => prev + char);
+        i++;
+      } else {
+        clearInterval(interval);
+        setTimeout(onDone, 1000); // 타이핑 끝난 후 1초 후에 넘어감
+      }
+    }, 100);
+
+    return () => clearInterval(interval);
+  }, [text, onDone]);
+
+  return <TypingTextWrapper>{displayedText}</TypingTextWrapper>;
+};
+
 type TitleProps = {
   data?: Data;
 };
 
 export default function Title({ data }: TitleProps) {
+  const [showIntro, setShowIntro] = useState(true);
+
   return (
     <Layout>
-      <VideoBackground autoPlay loop muted playsInline={true}>
-        <source src="./assets/BackgroundVideo.mp4" type="video/mp4" />
-      </VideoBackground>
-      <TitleWrapper>
-        <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
-        <GroomBride>
-          {data?.groom?.name} &#38; {data?.bride?.name}
-        </GroomBride>
-        <Schedule>
-          {data?.date}
-          <br />
-          {data?.location}
-        </Schedule>
-      </TitleWrapper>
+      <ImageBackground />
+
+      {showIntro && (
+        <IntroOverlay>
+          <TypingText text="We're getting married" onDone={() => setShowIntro(false)} />
+        </IntroOverlay>
+      )}
+
+      {!showIntro && (
+        <TitleWrapper>
+          <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
+          <GroomBride>
+            {data?.groom?.name} &#38; {data?.bride?.name}
+          </GroomBride>
+          <Schedule>
+            {data?.date}
+            <br />
+            {data?.location}
+          </Schedule>
+        </TitleWrapper>
+      )}
     </Layout>
   );
 }

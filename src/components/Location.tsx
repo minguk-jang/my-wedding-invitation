@@ -146,7 +146,7 @@ export default function Location() {
           </Button>
           <Button
             type="primary"
-            href="nmap://place?lat=37.5038437&lng=127.0110917&name=아펠가모 반포"
+            href="https://map.naver.com/v5/search/아펠가모반포/place/11339324?c=14129285.9790389,4517525.9862627,17,0,0,0,dh"
             target="_blank"
           >
             네이버지도에서 보기
@@ -156,8 +156,8 @@ export default function Location() {
         <div style={{ marginTop: "2rem" }}>
           <h3 style={{ fontSize: "1.25rem", fontWeight: "bold" }}>대중교통 안내</h3>
           <ul style={{ listStyleType: "disc", paddingLeft: "1.5rem" }}>
-            <li>🚇 지하철: 2호선 강남역 3번 출구 도보 10분</li>
-            <li>🚌 버스: 140, 400, 402번 탑승 후 “예식장 앞” 정류장에서 하차</li>
+            <li>🚇 지하철: 3·7·9호선 고속터미널역 5번 출구 도보 2분</li>
+            <li>🚌 버스: 142, 360, 362번 탑승 후 “고속터미널” 정류장에서 하차</li>
           </ul>
         </div>
       </motion.div>
