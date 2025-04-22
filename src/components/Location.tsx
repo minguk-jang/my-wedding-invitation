@@ -47,19 +47,17 @@
 //   );
 // }
 // components/Location.tsx
-
 import { styled } from "@stitches/react";
 import { Divider, Button } from "antd";
 import { motion } from "framer-motion";
 import Script from "next/script";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
     naver: any;
   }
 }
-
 
 const Wrapper = styled("div", {
   background: "#efebe9",
@@ -94,27 +92,29 @@ const ButtonGroup = styled("div", {
 
 export default function Location() {
   const mapRef = useRef<HTMLDivElement>(null);
+  const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== "undefined" && window.naver && mapRef.current) {
-      const location = new window.naver.maps.LatLng(37.5038437, 127.0110917); // 아펠가모 반포 위치
-      const map = new window.naver.maps.Map(mapRef.current, {
-        center: location,
-        zoom: 16,
-      });
+    if (!mapLoaded || !window.naver || !mapRef.current) return;
 
-      new window.naver.maps.Marker({
-        position: location,
-        map: map,
-      });
-    }
-  }, []);
+    const location = new window.naver.maps.LatLng(37.5038437, 127.0110917);
+    const map = new window.naver.maps.Map(mapRef.current, {
+      center: location,
+      zoom: 16,
+    });
+
+    new window.naver.maps.Marker({
+      position: location,
+      map: map,
+    });
+  }, [mapLoaded]);
 
   return (
     <Wrapper>
       <Script
         strategy="afterInteractive"
-        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5wzfb61ezn`} // 여기에 본인의 네이버 Client ID 넣기
+        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5wzfb61ezn`}
+        onLoad={() => setMapLoaded(true)}
       />
       <motion.div
         initial={{ opacity: 0, y: 50 }}
@@ -131,21 +131,21 @@ export default function Location() {
         <ButtonGroup>
           <Button
             type="primary"
-            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_APP_KEY&name=아펠가모+반포&lon=127.0110917&lat=37.5038437"
+            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_YOUR_APP_KEY&name=아펠가모%20반포&lon=127.0110917&lat=37.5038437"
             target="_blank"
           >
             티맵으로 길찾기
           </Button>
           <Button
             type="primary"
-            href="https://map.kakao.com/link/map/아펠가모 반포,37.5038437,127.0110917"
+            href="https://map.kakao.com/link/to/아펠가모반포,37.5038437,127.0110917"
             target="_blank"
           >
             카카오맵으로 길찾기
           </Button>
           <Button
             type="primary"
-            href="https://map.naver.com/v5/entry/place/13407968?c=14129091.9096951,4509206.5291067,15,0,0,0,dh"
+            href="nmap://place?lat=37.5038437&lng=127.0110917&name=아펠가모 반포"
             target="_blank"
           >
             네이버지도에서 보기
@@ -163,4 +163,3 @@ export default function Location() {
     </Wrapper>
   );
 }
-// components/Location.tsx
