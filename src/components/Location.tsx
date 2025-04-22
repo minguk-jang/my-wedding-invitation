@@ -54,6 +54,13 @@ import { motion } from "framer-motion";
 import Script from "next/script";
 import { useEffect, useRef } from "react";
 
+declare global {
+  interface Window {
+    naver: any;
+  }
+}
+
+
 const Wrapper = styled("div", {
   background: "#efebe9",
   backgroundImage: "url(./assets/GroovePaper.png)",
