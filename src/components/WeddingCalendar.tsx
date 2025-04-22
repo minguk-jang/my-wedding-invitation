@@ -241,6 +241,7 @@ const WeddingCalendar = () => {
       </div>
 
       <style jsx>{`
+
         .calendar-outer {
           display: flex;
           flex-direction: column;

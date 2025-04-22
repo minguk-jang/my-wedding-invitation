@@ -157,9 +157,12 @@ const PhotoContainer = styled("div", {
   alignItems: "center",
   gap: "2rem",
   marginTop: "2rem",
-  flexWrap: "nowrap", // ✅ 줄바꿈 없게 고정
-  overflowX: "auto", // ✅ 좁은 화면에서도 좌우 스크롤로 대응
-  padding: "0 1rem", // ✅ 스크롤 생길 때 살짝 여유
+  flexWrap: "wrap", // ✅ 줄바꿈 허용
+  width: "100%",
+
+  "@media (max-width: 480px)": {
+    gap: "1rem",
+  },
 });
 
 const Person = styled("div", {
@@ -220,7 +223,13 @@ export default function Gretting({ data }: GrettingProps) {
               alt="신랑 사진"
               width={160}
               height={160}
-              style={{ borderRadius: "50%", objectFit: "cover" }}
+              // style={{ borderRadius: "50%", objectFit: "cover" }}
+              style={{
+                borderRadius: "50%",
+                objectFit: "cover",
+                maxWidth: "40vw", // ✅ 작은 화면에서 자동 축소
+                height: "auto",
+              }}
               unoptimized
             />
             <PersonName>
@@ -233,7 +242,13 @@ export default function Gretting({ data }: GrettingProps) {
               alt="신부 사진"
               width={160}
               height={160}
-              style={{ borderRadius: "50%", objectFit: "cover" }}
+              // style={{ borderRadius: "50%", objectFit: "cover" }}
+              style={{
+                borderRadius: "50%",
+                objectFit: "cover",
+                maxWidth: "40vw", // ✅ 작은 화면에서 자동 축소
+                height: "auto",
+              }}
               unoptimized
             />
             <PersonName>
