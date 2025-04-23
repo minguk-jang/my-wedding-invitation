@@ -259,4 +259,4 @@ export default function Gretting({ data }: GrettingProps) {
       </motion.div>
     </Wrapper>
   );
-}
+} 

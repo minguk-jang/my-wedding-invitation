@@ -180,6 +180,10 @@ export default function Home() {
         {/* <meta name="theme-color" content="#BCAAA4" /> */}
       </Head>
       <main className={`${notoSansKR.className}`}>
+      {/* <main
+            className={`${notoSansKR.className}`}
+            style={{ backgroundColor: "#efebe9" }}
+          > */}
         <Script src="https://developers.kakao.com/sdk/js/kakao.min.js"></Script>
         <CenteredContainer>
           <Title data={JsonData} />
