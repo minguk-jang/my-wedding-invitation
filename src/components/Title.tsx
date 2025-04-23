@@ -64,18 +64,30 @@ const IntroOverlay = styled("div", {
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "3vh",
-  fontFamily: "'Noto Serif KR', serif",
+  fontSize: "5vh",
+  fontFamily: "'Lazy Ride Script', cursive", // "'Noto Serif KR', serif",
   letterSpacing: "0.1em",
   transition: "opacity 1s ease",
+  fontWeight: "bold",
 });
 
+// const TypingTextWrapper = styled("div", {
+//   fontFamily: "'Lazy Ride Script', cursive", // "'Noto Serif KR', serif","'Noto Serif KR', serif",
+//   fontSize: "5vh",
+//   color: "#fff",
+//   letterSpacing: "0.1em",
+//   fontWeight: "bold",
+// });
 const TypingTextWrapper = styled("div", {
-  fontFamily: "'Noto Serif KR', serif",
-  fontSize: "3vh",
+  fontFamily: "'Lazy Ride Script', cursive",
+  fontSize: "4vh",
   color: "#fff",
   letterSpacing: "0.1em",
+  // fontWeight: "bold",
+  textAlign: "center",         // ✅ 가운데 정렬 유지
+  lineHeight: "1.4",           // ✅ 줄 간격도 살짝 여유
 });
+
 
 const TypingText: React.FC<{ text: string; onDone: () => void }> = ({ text, onDone }) => {
   const [displayedText, setDisplayedText] = useState("");
@@ -112,7 +124,7 @@ export default function Title({ data }: TitleProps) {
 
       {showIntro && (
         <IntroOverlay>
-          <TypingText text="We're getting married" onDone={() => setShowIntro(false)} />
+          <TypingText text="Here begins their happily ever after!" onDone={() => setShowIntro(false)} />
         </IntroOverlay>
       )}
 
@@ -120,7 +132,7 @@ export default function Title({ data }: TitleProps) {
         <TitleWrapper>
           <WeddingInvitation>WEDDING INVITATION</WeddingInvitation>
           <GroomBride>
-            {data?.groom?.name} &#38; {data?.bride?.name}
+            {data?.groom?.name} ❤ {data?.bride?.name}
           </GroomBride>
           <Schedule>
             {data?.date}
