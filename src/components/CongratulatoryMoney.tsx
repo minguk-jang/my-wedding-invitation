@@ -1,20 +1,20 @@
-import { CheckCircleTwoTone } from "@ant-design/icons";
+import { Collapse, Divider, Button, message } from "antd";
 import { styled } from "@stitches/react";
-import { Button, Divider, Modal, message } from "antd";
-import { useState } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
-import { motion } from "framer-motion";
+import React from "react";
+
+const { Panel } = Collapse;
 
 const Wrapper = styled("div", {
   background: "#efebe9",
   backgroundImage: "url(./assets/GroovePaper.png)",
-  paddingBottom: 18,
+  paddingBottom: 36,
   width: "100%",
   textAlign: "center",
 });
 
 const Title = styled("p", {
-  fontSize: "3vh",
+  fontSize: "2vh",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
@@ -27,94 +27,184 @@ const Content = styled("p", {
   marginBottom: 24,
 });
 
-const SubContent = styled("p", {
+const Description = styled("p", {
   fontSize: "1.3vh",
   lineHeight: 1.75,
-  opacity: 0.75,
-  marginBottom: 24,
+  opacity: 0.65,
+  marginTop: 8,
+  textAlign: "left",
+  paddingLeft: 12,
 });
 
-const ContactButton = styled("div", {
-  display: "inline-block",
-  textAlign: "center",
-  marginLeft: 24,
-  marginRight: 24,
-  marginBottom: 24,
-  cursor: "pointer",
+const BlueHeader = styled("span", {
+  color: "#3f51b5",
+  fontWeight: "bold",
 });
 
-const InfoBlock = styled("div", {
-  marginBottom: 24,
+const PinkHeader = styled("span", {
+  color: "#e91e63",
+  fontWeight: "bold",
 });
 
-export default function GroomModalSection() {
-  const [groomVisible, setGroomVisible] = useState(false);
+const CustomCollapse = styled(Collapse, {
+  backgroundColor: "transparent",
+  ".ant-collapse-item": {
+    border: "2px solid #cfc6bd",
+    borderRadius: 12,
+    marginBottom: 16,
+    overflow: "hidden",
+    backgroundColor: "#efebe9",
+    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+  },
+  ".ant-collapse-item:last-child": {
+    marginBottom: 32,
+    borderBottom: "2px solid #cfc6bd",
+  },
+  ".ant-collapse-header": {
+    backgroundColor: "#efebe9",
+  },
+  ".ant-collapse-content": {
+    backgroundColor: "#efebe9",
+    borderTop: "1px solid #cfc6bd",
+    borderRadius: "0 0 12px 12px",
+  },
+});
 
-  const handleCopy = (label: string) => {
-    message.success(`${label} 복사되었습니다.`);
+const VerticalInfo = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "flex-start", // 좌측 정렬
+  marginBottom: 12,         // 간격 줄임
+  paddingLeft: 12,
+});
+
+type CongratulatoryMoneyProps = {
+  data?: {
+    groom?: {
+      name: string;
+      account_number: string;
+      parents?: {
+        father?: { name: string; account_number: string };
+        mother?: { name: string; account_number: string };
+      };
+    };
+    bride?: {
+      name: string;
+      account_number: string;
+      parents?: {
+        father?: { name: string; account_number: string };
+        mother?: { name: string; account_number: string };
+      };
+    };
   };
+};
 
+export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) {
   return (
     <Wrapper>
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 1.2 }}
-      >
-        <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <Title>마음 전하실 곳</Title>
-        </Divider>
-        <Content>축하의 마음을 담아 축의금을 전달해 보세요.</Content>
-        <ContactButton onClick={() => setGroomVisible(true)}>
-          <CheckCircleTwoTone
-            style={{ fontSize: 64, marginBottom: 16 }}
-            twoToneColor="#829fe0"
-          />
-          <br />
-          <SubContent>신랑측 계좌번호 확인</SubContent>
-        </ContactButton>
-      </motion.div>
+      <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
+        <Title>축하의 마음을 전하세요</Title>
+      </Divider>
+      <Content>축하의 마음을 담아 축의금을 전달해 보세요.</Content>
+      <CustomCollapse accordion bordered={false}>
+        <Panel header={<BlueHeader>신랑측</BlueHeader>} key="groom">
+          {data?.groom && (
+            <VerticalInfo>
+              <p style={{ color: "#3f51b5", marginBottom: 2 }}><b>신랑</b></p>
+              <CopyToClipboard
+                text={data.groom.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.groom.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.groom.name}</p>
+            </VerticalInfo>
+          )}
 
-      <Modal
-        title="신랑측 축의금 전달처"
-        open={groomVisible}
-        footer={null}
-        onCancel={() => setGroomVisible(false)}
-      >
-        <InfoBlock>
-          <p><strong>신랑 홍길동</strong></p>
-          <CopyToClipboard text="카카오페이 01012345678" onCopy={() => handleCopy("신랑 카카오페이")}>
-            <Button block>카카오페이 010-1234-5678 복사</Button>
-          </CopyToClipboard>
-          <br />
-          <CopyToClipboard text="국민은행 123456-78-901234" onCopy={() => handleCopy("신랑 계좌번호")}>
-            <Button block>국민은행 123456-78-901234 복사</Button>
-          </CopyToClipboard>
-        </InfoBlock>
+          {data?.groom?.parents?.father && (
+            <VerticalInfo>
+              <p style={{ color: "#3f51b5", marginBottom: 2 }}><b>신랑 아버지</b></p>
+              <CopyToClipboard
+                text={data.groom.parents.father.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.groom.parents.father.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.groom.parents.father.name}</p>
+            </VerticalInfo>
+          )}
 
-        <InfoBlock>
-          <p><strong>신랑 아버지 홍아버지</strong></p>
-          <CopyToClipboard text="카카오페이 01023456789" onCopy={() => handleCopy("신랑 아버지 카카오페이")}>
-            <Button block>카카오페이 010-2345-6789 복사</Button>
-          </CopyToClipboard>
-          <br />
-          <CopyToClipboard text="우리은행 234567-89-012345" onCopy={() => handleCopy("신랑 아버지 계좌번호")}>
-            <Button block>우리은행 234567-89-012345 복사</Button>
-          </CopyToClipboard>
-        </InfoBlock>
+          {data?.groom?.parents?.mother && (
+            <VerticalInfo>
+              <p style={{ color: "#3f51b5", marginBottom: 2 }}><b>신랑 어머니</b></p>
+              <CopyToClipboard
+                text={data.groom.parents.mother.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.groom.parents.mother.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.groom.parents.mother.name}</p>
+            </VerticalInfo>
+          )}
 
-        <InfoBlock>
-          <p><strong>신랑 어머니 이어머니</strong></p>
-          <CopyToClipboard text="카카오페이 01034567890" onCopy={() => handleCopy("신랑 어머니 카카오페이")}>
-            <Button block>카카오페이 010-3456-7890 복사</Button>
-          </CopyToClipboard>
-          <br />
-          <CopyToClipboard text="신한은행 345678-90-123456" onCopy={() => handleCopy("신랑 어머니 계좌번호")}>
-            <Button block>신한은행 345678-90-123456 복사</Button>
-          </CopyToClipboard>
-        </InfoBlock>
-      </Modal>
+          <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
+        </Panel>
+
+        <Panel header={<PinkHeader>신부측</PinkHeader>} key="bride">
+          {data?.bride && (
+            <VerticalInfo>
+              <p style={{ color: "#e91e63", marginBottom: 2 }}><b>신부</b></p>
+              <CopyToClipboard
+                text={data.bride.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.bride.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.bride.name}</p>
+            </VerticalInfo>
+          )}
+
+          {data?.bride?.parents?.father && (
+            <VerticalInfo>
+              <p style={{ color: "#e91e63", marginBottom: 2 }}><b>신부 아버지</b></p>
+              <CopyToClipboard
+                text={data.bride.parents.father.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.bride.parents.father.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.bride.parents.father.name}</p>
+            </VerticalInfo>
+          )}
+
+          {data?.bride?.parents?.mother && (
+            <VerticalInfo>
+              <p style={{ color: "#e91e63", marginBottom: 2 }}><b>신부 어머니</b></p>
+              <CopyToClipboard
+                text={data.bride.parents.mother.account_number}
+                onCopy={() => message.success("계좌번호가 복사되었습니다.")}
+              >
+                <Button type="text" style={{ padding: 0, color: "black" }}>
+                  {data.bride.parents.mother.account_number}
+                </Button>
+              </CopyToClipboard>
+              <p style={{ color: "black", marginBottom: 0 }}>{data.bride.parents.mother.name}</p>
+            </VerticalInfo>
+          )}
+
+          <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
+        </Panel>
+      </CustomCollapse>
     </Wrapper>
   );
 }

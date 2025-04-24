@@ -32,7 +32,7 @@
   },
   "kakaotalk": {
     "api_token": "",
-    "wedding_invitation_url": "",
-    "share_image": ""
+    "wedding_invitation_url": "https://my-wedding-invitation-two.vercel.app/",
+    "share_image": "./images/fig1.jpeg"
   }
 }
