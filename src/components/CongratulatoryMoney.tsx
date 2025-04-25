@@ -116,7 +116,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
           .split("\n")
           .map((line, idx) => (
             <span key={idx} style={{
-              fontSize: "1.8vh",
+              fontSize: "1.5vh",
               display: "block",
               lineHeight: 1.7,
               marginBottom: "16px",  // ✅ 여기! 아랫 간격
@@ -222,7 +222,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
           .split("\n")
           .map((line, idx) => (
             <span key={idx} style={{
-              fontSize: "1.8vh",
+              fontSize: "1.5vh",
               display: "block",
               lineHeight: 1.7,
               marginBottom: "16px",  // ✅ 여기! 아랫 간격
