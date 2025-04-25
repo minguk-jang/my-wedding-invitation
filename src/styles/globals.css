@@ -4,10 +4,14 @@ body {
   margin: 0;
 }
 
-* {
+/* 수정전 */
+/* * {
   font-family: 'Noto Serif KR', serif, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
     'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
     'Segoe UI Symbol', 'Noto Color Emoji';
+} */
+* {
+  font-family: 'Apple SD Gothic Neo', 'NanumBarunGothic', 'Malgun Gothic', '맑은 고딕', '돋움', 'Dotum', sans-serif;
 }
 
 @keyframes fadein {

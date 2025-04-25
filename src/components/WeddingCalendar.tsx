@@ -348,7 +348,7 @@ const Header = styled('div', {
   fontWeight: 'bold',
   color: '#a0522d',
   marginBottom: '10px',
-  fontFamily: "'Nanum Myeongjo', serif",
+  fontFamily: "'Apple SD Gothic Neo', sans-serif",//"'Nanum Myeongjo', serif",
 });
 
 const CalendarContainer = styled('div', {
