@@ -421,11 +421,18 @@ const WeddingCalendar = () => {
           z-index: 0;
         }
 
+        
         .react-calendar__tile abbr {
           font-size: 0.8rem;
           font-family: 'Nanum Myeongjo', serif;
-          color: #333 !important; /* ✅ 평일 텍스트 색상 고정 */
+          // color: #333 !important; /* ✅ 평일 텍스트 색상 고정 */
         }
+
+        .react-calendar__tile--neighboringMonth abbr {
+          color: #bbb !important; /* ✅ 밝은 회색으로 표시 */
+          opacity: 0.1 !important;
+        }
+
 
         .react-calendar__tile--now {
           background: none !important;
