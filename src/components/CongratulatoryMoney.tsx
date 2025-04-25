@@ -125,7 +125,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               <br />
             </span>
           ))}
-        <CustomCollapse accordion bordered={false}>
+        <CustomCollapse accordion={false} bordered={false} defaultActiveKey={["groom", "bride"]}>
           <Panel header={<BlueHeader>신랑측</BlueHeader>} key="groom">
             {data?.groom && (
               <VerticalInfo>
