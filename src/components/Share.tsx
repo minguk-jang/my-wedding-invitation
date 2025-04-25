@@ -120,7 +120,7 @@ export default function Share({ data }: ShareProps) {
           onClick={() => setShareCount(shareCount + 1)}
         >
           카카오톡으로 공유하기
-        </KakaoTalkShareButton>z
+        </KakaoTalkShareButton>
         <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
           <LinkShareButton
             style={{ margin: 8 }}

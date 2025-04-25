@@ -1,53 +1,3 @@
-// import { styled } from "@stitches/react";
-// import { Divider } from "antd";
-// import { motion } from "framer-motion"; // Framer Motion 추가
-
-// const Wrapper = styled("div", {
-//   background: "#efebe9",
-//   backgroundImage: "url(./assets/GroovePaper.png)",
-//   width: "100%",
-//   paddingBottom: 42,
-//   textAlign: "center",
-// });
-
-// const Title = styled("p", {
-//   fontSize: "3vh",
-//   fontWeight: "bold",
-//   opacity: 0.85,
-//   marginBottom: 0,
-// });
-
-// const Image = styled("img", {
-//   width: "75%",
-//   maxWidth: 1024,
-// });
-
-// export default function Location() {
-//   return (
-//     <Wrapper>
-//       <motion.div
-//         initial={{ opacity: 0, y: 50 }}
-//         whileInView={{ opacity: 1, y: 0 }}
-//         viewport={{ once: true, amount: 0.2 }}
-//         transition={{ duration: 1.2 }}
-//       >
-//         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-//           <Title>오시는 길</Title>
-//         </Divider>
-//         <Image src="./assets/LocationMap.png" />
-//         <div style={{ marginTop: '1.5rem' }}>
-//           <h3 style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>대중교통 안내</h3>
-//           <ul style={{ listStyleType: 'disc', paddingLeft: '1.5rem' }}>
-//             <li>🚇 지하철: 2호선 강남역 3번 출구 도보 10분</li>
-//             <li>🚌 버스: 140, 400, 402번 탑승 후 “예식장 앞” 정류장에서 하차</li>
-//           </ul>
-//         </div>
-//       </motion.div>
-//     </Wrapper>
-//   );
-// }
-// components/Location.tsx
-
 import { styled } from "@stitches/react";
 import { Divider, Button } from "antd";
 import { motion } from "framer-motion";
@@ -56,7 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 declare global {
   interface Window {
-    naver: any;
+    kakao: any;
   }
 }
 
@@ -96,17 +46,21 @@ export default function Location() {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   useEffect(() => {
-    if (!mapLoaded || !window.naver || !mapRef.current) return;
+    if (!mapLoaded || !window.kakao || !mapRef.current) return;
 
-    const location = new window.naver.maps.LatLng(37.5038437, 127.0110917);
-    const map = new window.naver.maps.Map(mapRef.current, {
-      center: location,
-      zoom: 16,
-    });
+    window.kakao.maps.load(() => {
+      const container = mapRef.current;
+      const options = {
+        center: new window.kakao.maps.LatLng(37.5008, 127.0031),
+        level: 3,
+      };
+      const map = new window.kakao.maps.Map(container, options);
 
-    new window.naver.maps.Marker({
-      position: location,
-      map: map,
+      const markerPosition = new window.kakao.maps.LatLng(37.5008, 127.0031);
+      new window.kakao.maps.Marker({
+        position: markerPosition,
+        map: map,
+      });
     });
   }, [mapLoaded]);
 
@@ -114,9 +68,10 @@ export default function Location() {
     <Wrapper>
       <Script
         strategy="afterInteractive"
-        src={`https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=5wzfb61ezn`}
+        src={`//dapi.kakao.com/v2/maps/sdk.js?appkey=ae58ca9752a9bf959a813a11b8fb32f1&autoload=false`}
         onLoad={() => setMapLoaded(true)}
       />
+
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -130,16 +85,16 @@ export default function Location() {
         <MapContainer ref={mapRef} />
 
         <ButtonGroup>
-          <Button
+          {/* <Button
             type="primary"
-            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_YOUR_APP_KEY&name=아펠가모%20반포&lon=127.0110917&lat=37.5038437"
+            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_YOUR_APP_KEY&name=아펠가모%20반포&lon=127.0031&lat=37.5008"
             target="_blank"
           >
             티맵으로 길찾기
-          </Button>
+          </Button> */}
           <Button
             type="primary"
-            href="https://map.kakao.com/link/to/아펠가모반포,37.5038437,127.0110917"
+            href="https://map.kakao.com/link/to/아펠가모반포,37.5008,127.0031"
             target="_blank"
           >
             카카오맵으로 길찾기
