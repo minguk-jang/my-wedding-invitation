@@ -26,8 +26,8 @@ const Title = styled("p", {
 });
 
 const MapContainer = styled("div", {
-  width: "90%",
-  height: 400,
+  width: "70%",
+  height: 300,
   margin: "0 auto",
   borderRadius: 8,
   overflow: "hidden",
@@ -51,12 +51,12 @@ export default function Location() {
     window.kakao.maps.load(() => {
       const container = mapRef.current;
       const options = {
-        center: new window.kakao.maps.LatLng(37.5008, 127.0031),
+        center: new window.kakao.maps.LatLng(37.5008, 127.0032),
         level: 3,
       };
       const map = new window.kakao.maps.Map(container, options);
 
-      const markerPosition = new window.kakao.maps.LatLng(37.5008, 127.0031);
+      const markerPosition = new window.kakao.maps.LatLng(37.5008, 127.0032);
       new window.kakao.maps.Marker({
         position: markerPosition,
         map: map,
@@ -87,14 +87,14 @@ export default function Location() {
         <ButtonGroup>
           {/* <Button
             type="primary"
-            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_YOUR_APP_KEY&name=아펠가모%20반포&lon=127.0031&lat=37.5008"
+            href="https://apis.openapi.sk.com/tmap/app/routes?appKey=SK_YOUR_APP_KEY&name=아펠가모%20반포&lon=127.0032&lat=37.5008"
             target="_blank"
           >
             티맵으로 길찾기
           </Button> */}
           <Button
             type="primary"
-            href="https://map.kakao.com/link/to/아펠가모반포,37.5008,127.0031"
+            href="https://map.kakao.com/link/to/아펠가모반포,37.5008,127.0032"
             target="_blank"
           >
             카카오맵으로 길찾기

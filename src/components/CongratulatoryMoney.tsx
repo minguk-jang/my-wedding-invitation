@@ -15,7 +15,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "2vh",
+  fontSize: "3vh",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
@@ -110,9 +110,21 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
         transition={{ duration: 1.2 }}
       >
         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <Title>축하의 마음을 전하세요</Title>
+          <Title>마음 전하실 곳</Title>
         </Divider>
-        <Content>축하의 마음을 담아 축의금을 전달해 보세요.</Content>
+              {"비대면으로 축하를 전하고자\n하시는 분들을 위해\n계좌번호를 기재하였습니다.\n너그러운 마음으로 양해 부탁드립니다.\n"
+          .split("\n")
+          .map((line, idx) => (
+            <span key={idx} style={{
+              fontSize: "1.8vh",
+              display: "block",
+              lineHeight: 1.7,
+              marginBottom: "16px",  // ✅ 여기! 아랫 간격
+            }}>
+              {line}
+              <br />
+            </span>
+          ))}
         <CustomCollapse accordion bordered={false}>
           <Panel header={<BlueHeader>신랑측</BlueHeader>} key="groom">
             {data?.groom && (
@@ -206,6 +218,19 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
             <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
           </Panel>
         </CustomCollapse>
+        {"\n예식장 규정에 따라 화환 반입이 불가합니다.\n마음만 감사히 받겠습니다."
+          .split("\n")
+          .map((line, idx) => (
+            <span key={idx} style={{
+              fontSize: "1.8vh",
+              display: "block",
+              lineHeight: 1.7,
+              marginBottom: "16px",  // ✅ 여기! 아랫 간격
+            }}>
+              {line}
+              <br />
+            </span>
+          ))}
       </motion.div>
     </Wrapper>
   );
