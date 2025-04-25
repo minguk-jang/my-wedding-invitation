@@ -407,7 +407,7 @@ const WeddingCalendar = () => {
         .react-calendar {
           background-color: transparent;
           border: none;
-          font-family: 'Nanum Myeongjo', serif;
+          font-family:  'Nanum Myeongjo', serif;
           width: 100%;
         }
 
@@ -424,6 +424,7 @@ const WeddingCalendar = () => {
         .react-calendar__tile abbr {
           font-size: 0.8rem;
           font-family: 'Nanum Myeongjo', serif;
+          color: #333 !important; /* ✅ 평일 텍스트 색상 고정 */
         }
 
         .react-calendar__tile--now {
@@ -437,7 +438,8 @@ const WeddingCalendar = () => {
         .react-calendar__tile.highlight abbr {
           display: inline-block;
           background: #ff6b6b;
-          color: white;
+          // color: white;
+          color: white !important; /* ✅ 강조 날짜는 흰색 유지 */
           border-radius: 50%;
           width: 25px;
           height: 25px;
