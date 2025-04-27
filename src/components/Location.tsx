@@ -246,7 +246,7 @@ export default function Location() {
         </ButtonGroup> */}
         <ButtonGroup>
           <NaviButton
-            href="https://navigate.kakao.com/launch?x=127.0032287&y=37.5008416&coord_type=wgs84"
+            href="https://navigate.kakao.com/launch?name=아펠가모반포&x=127.0032287&y=37.5008416"
             target="_blank"
           >
             <NaviIcon src="/images/kakao_navi.svg" alt="카카오내비 아이콘" />
