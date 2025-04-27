@@ -245,8 +245,8 @@ export default function Location() {
           </NaviButton>
         </ButtonGroup> */}
         <ButtonGroup>
-        <NaviButton
-            href="https://navigate.kakao.com/launch?name=아펠가모반포&x=127.0032287&y=37.5008416"
+          <NaviButton
+            href="https://map.kakao.com/link/map/아펠가모%20반포,37.5008416,127.0032287"
             target="_blank"
           >
             <NaviIcon src="/images/kakao_navi.svg" alt="카카오내비 아이콘" />
@@ -254,12 +254,12 @@ export default function Location() {
           </NaviButton>
 
           <NaviButton
-            href="https://map.naver.com/v5/search/아펠가모%20반포"
-            target="_blank"
-          >
-            <NaviIcon src="/images/naver_map.webp" alt="네이버지도 아이콘" />
-            네이버지도에서 보기
-          </NaviButton>
+          href="https://map.naver.com/v5/search/아펠가모%20반포"
+          target="_blank"
+        >
+          <NaviIcon src="/images/naver_map.webp" alt="네이버지도 아이콘" />
+          네이버지도에서 보기
+        </NaviButton>
         </ButtonGroup>
 
 
