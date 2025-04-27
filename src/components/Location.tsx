@@ -249,7 +249,7 @@ export default function Location() {
             href="https://map.kakao.com/?q=아펠가모반포"
             target="_blank"
           >
-            <NaviIcon src="/images/kakao_navi.svg" alt="카카오내비 아이콘" />ㄴ
+            <NaviIcon src="/images/kakao_navi.svg" alt="카카오내비 아이콘" />
             카카오맵에서 보기
           </NaviButton>
 
