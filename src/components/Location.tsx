@@ -246,11 +246,11 @@ export default function Location() {
         </ButtonGroup> */}
         <ButtonGroup>
           <NaviButton
-            href="https://navigate.kakao.com/launch?name=아펠가모반포&x=127.0032287&y=37.5008416"
+            href="https://map.kakao.com/link/route/아펠가모반포,37.5008416,127.0032287"
             target="_blank"
           >
             <NaviIcon src="/images/kakao_navi.svg" alt="카카오내비 아이콘" />
-            카카오맵으로 길찾기
+            카카오맵으로 보기
           </NaviButton>
 
           <NaviButton
