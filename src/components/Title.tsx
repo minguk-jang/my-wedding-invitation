@@ -17,7 +17,7 @@ const ImageBackground = styled("div", {
   left: 0,
   width: "100%",
   height: "100%",
-  backgroundImage: "url('./images/fig3.jpeg')",
+  backgroundImage: "url('./images/fig4.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center center",
   opacity: 0.9,
@@ -28,7 +28,7 @@ const ImageBackground = styled("div", {
 const TitleWrapper = styled("div", {
   position: "absolute",
   width: "100%",
-  top: "10%",
+  top: "60%",
   left: "50%",
   transform: "translateX(-50%)",
   textAlign: "center",
