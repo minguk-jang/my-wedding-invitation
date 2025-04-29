@@ -144,9 +144,10 @@ const Wrapper = styled('div', {
 });
 
 const Title = styled('p', {
-  fontSize: '20px',
+  fontSize: '17.5px',
   color: '#8b4513',
   marginBottom: '20px',
+  letterSpacing: "-0.03em",  // ✅ 자간 줄임
 });
 
 const Timer = styled('div', {

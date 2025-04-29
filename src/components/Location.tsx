@@ -265,7 +265,7 @@ export default function Location() {
 
 
         <div style={{ marginTop: "2rem" }}>
-          <ul style={{ listStyleType: "none", paddingLeft: 0, fontSize: "1.5vh", marginTop: "1rem" }}>
+          <ul style={{ listStyleType: "none", paddingLeft: 0, fontSize: "1.75vh", marginTop: "1rem" }}>
             <li style={{ textAlign: "left", marginBottom: "0.75rem", marginLeft: "1rem" }}>
               🚇 지하철:<br />
               3·7·9호선 고속터미널역 5번 출구에서 나와 서래공원 방면 신호등 건넌 후 첫번째 건물 (효성반포빌딩) LL층 (지하 2층)

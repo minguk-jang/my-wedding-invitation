@@ -1,13 +1,18 @@
-// import ImageGallery from "react-image-gallery";
-// import { Divider } from "antd";
+// import React from "react";
 // import { styled } from "@stitches/react";
-// import { motion } from "framer-motion"; // Framer Motion 추가
-// import "react-image-gallery/styles/css/image-gallery.css";
+// import { Divider } from "antd";
+// import { motion } from "framer-motion";
+// import {
+//   PhotoProvider,
+//   PhotoView,
+// } from "react-photo-view";
+// import "react-photo-view/dist/react-photo-view.css";
 
 // const Wrapper = styled("div", {
 //   background: "#efebe9",
 //   backgroundImage: "url(./assets/GroovePaper.png)",
 //   width: "100%",
+//   paddingBottom: 40,
 // });
 
 // const Title = styled("p", {
@@ -17,23 +22,24 @@
 //   marginBottom: 0,
 // });
 
+// const ImageGrid = styled("div", {
+//   display: "grid",
+//   gridTemplateColumns: "repeat(2, 1fr)",
+//   gap: "12px",
+//   padding: "0 24px",
+// });
+
+// const StyledImage = styled("img", {
+//   width: "100%",
+//   borderRadius: "8px",
+//   cursor: "pointer",
+// });
+
 // const images = [
-//   {
-//     original: "./images/fig1.jpeg",
-//     thumbnail: "./images/fig1.jpeg",
-//   },
-//   {
-//     original: "./images/fig2.jpeg",
-//     thumbnail: "./images/fig2.jpeg",
-//   },
-//   {
-//     original: "./images/fig3.jpeg",
-//     thumbnail: "./images/fig3.jpeg",
-//   },
-//   {
-//     original: "./images/fig4.jpeg",
-//     thumbnail: "./images/fig4.jpeg",
-//   }
+//   "./images/fig1.jpeg",
+//   "./images/fig2.jpeg",
+//   "./images/fig3.jpeg",
+//   "./images/fig4.jpeg",
 // ];
 
 // export default function Gallery() {
@@ -48,24 +54,26 @@
 //         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
 //           <Title>우리의 아름다운 순간</Title>
 //         </Divider>
-//         <ImageGallery
-//           showPlayButton={false}
-//           showFullscreenButton={false}
-//           items={images}
-//         />
+
+//         <PhotoProvider loop>
+//           <ImageGrid>
+//             {images.map((src, index) => (
+//               <PhotoView key={index} src={src}>
+//                 <StyledImage src={src} alt={`fig${index + 1}`} />
+//               </PhotoView>
+//             ))}
+//           </ImageGrid>
+//         </PhotoProvider>
 //       </motion.div>
 //     </Wrapper>
 //   );
 // }
 
-import React from "react";
-import { styled } from "@stitches/react";
+import { images } from "@/constants/images";
 import { Divider } from "antd";
 import { motion } from "framer-motion";
-import {
-  PhotoProvider,
-  PhotoView,
-} from "react-photo-view";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import { styled } from "@stitches/react";
 import "react-photo-view/dist/react-photo-view.css";
 
 const Wrapper = styled("div", {
@@ -82,27 +90,36 @@ const Title = styled("p", {
   marginBottom: 0,
 });
 
-const ImageGrid = styled("div", {
-  display: "grid",
-  gridTemplateColumns: "repeat(2, 1fr)",
-  gap: "12px",
+const ScrollContainer = styled("div", {
+  display: "flex",
+  overflowX: "auto",
   padding: "0 24px",
+  gap: "12px",
+  scrollSnapType: "x mandatory",
+});
+
+const Column = styled("div", {
+  display: "flex",
+  flexDirection: "column",
+  gap: "12px",
+  flex: "0 0 auto",
+  width: "45%",
 });
 
 const StyledImage = styled("img", {
   width: "100%",
+  height: "300px",        // ✅ 높이 고정 (원하는 수치로 조정 가능)
   borderRadius: "8px",
   cursor: "pointer",
+  objectFit: "cover",      // ✅ 비율 무시하고, 채우기 (필수!)
 });
 
-const images = [
-  "./images/fig1.jpeg",
-  "./images/fig2.jpeg",
-  "./images/fig3.jpeg",
-  "./images/fig4.jpeg",
-];
-
 export default function Gallery() {
+  const groupedImages = [];
+  for (let i = 0; i < images.length; i += 2) {
+    groupedImages.push(images.slice(i, i + 2));
+  }
+
   return (
     <Wrapper>
       <motion.div
@@ -116,13 +133,17 @@ export default function Gallery() {
         </Divider>
 
         <PhotoProvider loop>
-          <ImageGrid>
-            {images.map((src, index) => (
-              <PhotoView key={index} src={src}>
-                <StyledImage src={src} alt={`fig${index + 1}`} />
-              </PhotoView>
+          <ScrollContainer>
+            {groupedImages.map((group, groupIdx) => (
+              <Column key={groupIdx}>
+                {group.map((src, idx) => (
+                  <PhotoView key={idx} src={src}>
+                    <StyledImage src={src} alt={`image${groupIdx * 2 + idx + 1}`} />
+                  </PhotoView>
+                ))}
+              </Column>
             ))}
-          </ImageGrid>
+          </ScrollContainer>
         </PhotoProvider>
       </motion.div>
     </Wrapper>

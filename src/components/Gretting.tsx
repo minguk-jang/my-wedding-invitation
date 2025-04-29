@@ -136,11 +136,12 @@ const Title = styled("p", {
 
 const Content = styled("div", {
   fontSize: "1.75vh",
-  lineHeight: 1.75,
+  lineHeight: "1.5",
   opacity: 0.75,
   marginBottom: 16,
   width: "100%",
   textAlign: "center",
+  letterSpacing: "-0.01em",  // ✅ 자간 줄임
 });
 
 // const PhotoContainer = styled("div", {
@@ -190,7 +191,7 @@ export default function Gretting({ data }: GrettingProps) {
         transition={{ duration: 1.2 }}
       >
         <Divider style={{ marginTop: 0, marginBottom: 32 }} plain>
-          <Title>결혼합니다</Title>
+          <Title>저희 결혼합니다</Title>
         </Divider>
       </motion.div>
 
