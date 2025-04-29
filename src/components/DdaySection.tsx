@@ -141,6 +141,7 @@ const Wrapper = styled('div', {
   boxSizing: 'border-box',
   textAlign: 'center',
   fontFamily: "'Noto Serif KR', serif",
+  paddingBottom: 72,
 });
 
 const Title = styled('p', {

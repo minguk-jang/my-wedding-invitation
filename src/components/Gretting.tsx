@@ -125,6 +125,7 @@ const Wrapper = styled("div", {
   width: "100%",
   padding: "2rem 1rem",
   boxSizing: "border-box",
+  paddingBottom: 72,
 });
 
 const Title = styled("p", {

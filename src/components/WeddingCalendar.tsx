@@ -341,6 +341,7 @@ const Wrapper = styled('div', {
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
+  paddingBottom: 72,
 });
 
 const Header = styled('div', {

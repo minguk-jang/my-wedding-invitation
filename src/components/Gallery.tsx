@@ -80,7 +80,7 @@ const Wrapper = styled("div", {
   background: "#efebe9",
   backgroundImage: "url(./assets/GroovePaper.png)",
   width: "100%",
-  paddingBottom: 40,
+  paddingBottom: 72,
 });
 
 const Title = styled("p", {

@@ -9,7 +9,7 @@ const { Panel } = Collapse;
 const Wrapper = styled("div", {
   background: "#efebe9",
   backgroundImage: "url(./assets/GroovePaper.png)",
-  paddingBottom: 36,
+  paddingBottom: 72,
   width: "100%",
   textAlign: "center",
 });
@@ -75,7 +75,7 @@ const VerticalInfo = styled("div", {
   display: "flex",
   flexDirection: "column",
   alignItems: "flex-start",
-  marginBottom: 12,
+  marginBottom: 0,
   paddingLeft: 12,
 });
 

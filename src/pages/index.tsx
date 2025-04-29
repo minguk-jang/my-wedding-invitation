@@ -25,6 +25,10 @@ const CongratulatoryMoney = dynamic(
 );
 const Share = dynamic(() => import("@/components/Share"), { ssr: false });
 
+const SectionSpacer = styled("div", {
+  marginBottom: "6vh",
+});
+
 const notoSansKR = Noto_Sans_KR({
   weight: ["400", "700"],
   subsets: [],
