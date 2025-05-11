@@ -49,7 +49,7 @@ const NaviButton = styled("a", {
   backgroundColor: "white",
   borderRadius: "8px",
   textDecoration: "none",
-  fontSize: "1.125rem",
+  fontSize: "0.8rem",
   fontWeight: "500",
   color: "#333",
   boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.15)", // 오른쪽 + 아래 그림자
