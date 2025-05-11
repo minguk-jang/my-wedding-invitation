@@ -174,7 +174,7 @@ const Person = styled("div", {
 const PersonName = styled("p", {
   marginTop: "0.5rem",
   fontWeight: "500",
-  fontSize: "2.5vh",
+  fontSize: "2.vh",
   opacity: 0.85,
 });
 
