@@ -129,14 +129,14 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "3vh",
+  fontSize: "4vh",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
 });
 
 const Content = styled("div", {
-  fontSize: "1.75vh",
+  fontSize: "2.5vh",
   lineHeight: "1.5",
   opacity: 0.75,
   marginBottom: 16,
@@ -174,7 +174,7 @@ const Person = styled("div", {
 const PersonName = styled("p", {
   marginTop: "0.5rem",
   fontWeight: "500",
-  fontSize: "1.5vh",
+  fontSize: "2.5vh",
   opacity: 0.85,
 });
 

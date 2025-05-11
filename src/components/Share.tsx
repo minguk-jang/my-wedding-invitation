@@ -21,7 +21,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "24px", // ✅ vh 대신 px 고정
+  fontSize: "4vh", // ✅ vh 대신 px 고정
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,

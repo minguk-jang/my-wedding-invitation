@@ -84,7 +84,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "3vh",
+  fontSize: "4vh",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
@@ -129,7 +129,7 @@ export default function Gallery() {
         transition={{ duration: 1.2 }}
       >
         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <Title>우리의 아름다운 순간</Title>
+          <Title>우리의 순간</Title>
         </Divider>
 
         <PhotoProvider loop>

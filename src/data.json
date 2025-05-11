@@ -4,29 +4,29 @@
   "gretting": "서로 다른 페이지를 넘기며\n각자의 이야기를 써오던 두 사람이\n가을의 바람 속에서 처음 마주했습니다.\n\n함께한 계절들이 쌓이고,\n아홉 해의 시간이 한 권의 이야기처럼 이어졌습니다.\n\n처음엔 몇 줄의 등장으로 시작했지만,\n조금씩 더 자주, 더 깊이 스며들며\n이젠 서로의 이야기에서\n빠질 수 없는 주인공이 되었습니다.\n\n이제 우리는\n하나의 책장을 함께 펼치려 합니다.\n\n햇살이 눈부신 여름,\n같은 문장, 같은 속도로\n같은 결말을 향해 걸어가려 합니다.\n\nHere begins their happily ever after.\n\n우리의 첫 문장에\n소중한 당신의 이름도 함께 적고 싶습니다.",
   "groom": {
     "name": "장민국",
-    "account_number": "우체국 은행 312512-02-206512",
+    "account_number": "우체국 312512-02-206512",
     "parents": {
       "mother": {
         "name": "임윤남",
-        "account_number": "○○은행 ***-***-******"
+        "account_number": "새마을금고 9003-2418-2086-3"
       },
       "father": {
         "name": "장종익",
-        "account_number": "○○은행 ***-***-******"
+        "account_number": "농협 351-0207-9037-03"
       }
     }
   },
   "bride": {
     "name": "이주연",
-    "account_number": "○○은행 ***-***-******",
+    "account_number": "국민은행 448601-01-492926",
     "parents": {
       "mother": {
         "name": "김윤자",
-        "account_number": "○○은행 ***-***-******"
+        "account_number": "국민은행 448601-01-445034"
       },
       "father": {
         "name": "이인수",
-        "account_number": "○○은행 ***-***-******"
+        "account_number": "국민은행 463525-01-002760"
       }
     }
   },

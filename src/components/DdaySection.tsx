@@ -145,16 +145,16 @@ const Wrapper = styled('div', {
 });
 
 const Title = styled('p', {
-  fontSize: '17.5px',
+  fontSize: '4vh',
   color: '#8b4513',
   marginBottom: '20px',
-  letterSpacing: "-0.03em",  // ✅ 자간 줄임
+  letterSpacing: "0.03em",  // ✅ 자간 줄임
 });
 
 const Timer = styled('div', {
   display: 'flex',
   justifyContent: 'center',
-  gap: '16px',
+  gap: '30px',
 
   '@media (max-width: 480px)': {
     gap: '12px',
@@ -172,29 +172,29 @@ const Circle = styled('div', {
   height: '64px',
   borderRadius: '50%',
   backgroundColor: 'white',
-  border: '2px solid #deb887',
+  // border: '2px solid #deb887',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '24px',
-  fontWeight: 'bold',
-  color: '#a0522d',
+  fontSize: '2.5vh',
+  // fontWeight: 'bold',
+  color: '#4F4F4F', //'#a0522d',
   boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
 
   '@media (max-width: 480px)': {
     width: '52px',
     height: '52px',
-    fontSize: '18px',
+    fontSize: '2.5vh',
   },
 });
 
 const Label = styled('span', {
   marginTop: '8px',
-  fontSize: '14px',
+  fontSize: '2.5vh',
   color: '#8b4513',
 
   '@media (max-width: 480px)': {
-    fontSize: '12px',
+    fontSize: '2.5vh',
   },
 });
 
@@ -238,7 +238,7 @@ const DdaySection: React.FC<{ weddingDate: Date }> = ({ weddingDate }) => {
         transition={{ duration: 1.2 }}
         style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}
       >
-        <Title>민국 & 주연의 결혼식까지</Title>
+        <Title>민국과 주연의 결혼식까지</Title>
         <Timer>
           {[
             { label: 'Days', value: timeLeft.days },
