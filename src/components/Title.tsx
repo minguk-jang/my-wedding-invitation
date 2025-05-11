@@ -362,7 +362,7 @@ const TypingTextWrapper = styled("div", {
 });
 
 const Line = styled("div", {
-  minHeight: "1em",
+  minHeight: "1.5em",
 });
 
 const MusicButton = styled("button", {
