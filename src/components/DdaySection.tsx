@@ -145,7 +145,7 @@ const Wrapper = styled('div', {
 });
 
 const Title = styled('p', {
-  fontSize: '4vh',
+  fontSize: '1.75rem',
   color: '#8b4513',
   marginBottom: '20px',
   letterSpacing: "0.03em",  // ✅ 자간 줄임
@@ -176,7 +176,7 @@ const Circle = styled('div', {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  fontSize: '2.5vh',
+  fontSize: '1.125rem',
   // fontWeight: 'bold',
   color: '#4F4F4F', //'#a0522d',
   boxShadow: '0 2px 6px rgba(0, 0, 0, 0.1)',
@@ -184,17 +184,17 @@ const Circle = styled('div', {
   '@media (max-width: 480px)': {
     width: '52px',
     height: '52px',
-    fontSize: '2.5vh',
+    fontSize: '1.125rem',
   },
 });
 
 const Label = styled('span', {
   marginTop: '8px',
-  fontSize: '2.5vh',
+  fontSize: '1.125rem',
   color: '#8b4513',
 
   '@media (max-width: 480px)': {
-    fontSize: '2.5vh',
+    fontSize: '1.125rem',
   },
 });
 

@@ -13,7 +13,7 @@
 // });
 
 // const Title = styled("p", {
-//   fontSize: "4vh",
+//   fontSize: "1.75rem",
 //   fontWeight: "bold",
 //   opacity: 0.85,
 //   marginBottom: 0,
@@ -95,7 +95,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "4vh",
+  fontSize: "1.75rem",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,

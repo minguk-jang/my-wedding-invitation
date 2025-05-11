@@ -43,7 +43,7 @@
 // });
 
 // const GroomBride = styled("p", {
-//   fontSize: "4vh",
+//   fontSize: "1.75rem",
 //   fontWeight: "bold",
 //   opacity: 0.9,
 //   marginBottom: 16,
@@ -315,7 +315,7 @@ const WeddingInvitation = styled("p", {
 });
 
 const GroomBride = styled("p", {
-  fontSize: "1.75rem", // 4vh
+  fontSize: "1.75rem", // 1.75rem
   fontWeight: "bold",
   opacity: 0.9,
   marginBottom: 16,

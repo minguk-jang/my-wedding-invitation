@@ -19,7 +19,7 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "4vh",
+  fontSize: "1.75rem",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
@@ -49,7 +49,7 @@ const NaviButton = styled("a", {
   backgroundColor: "white",
   borderRadius: "8px",
   textDecoration: "none",
-  fontSize: "2.5vh",
+  fontSize: "1.125rem",
   fontWeight: "500",
   color: "#333",
   boxShadow: "3px 3px 6px rgba(0, 0, 0, 0.15)", // 오른쪽 + 아래 그림자
@@ -265,7 +265,7 @@ export default function Location() {
 
 
         <div style={{ marginTop: "2rem" }}>
-          <ul style={{ listStyleType: "none", paddingLeft: 0, fontSize: "2.5vh", marginTop: "1rem" }}>
+          <ul style={{ listStyleType: "none", paddingLeft: 0, fontSize: "1.125rem", marginTop: "1rem" }}>
             <li style={{ textAlign: "left", marginBottom: "0.75rem", marginLeft: "1rem" }}>
               🚇 지하철<br />
               3·7·9호선 고속터미널역 5번 출구에서 나와 서래공원 방면 신호등 건넌 후 첫번째 건물 (효성반포빌딩) LL층 (지하 2층)

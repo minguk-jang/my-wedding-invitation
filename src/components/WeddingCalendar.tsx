@@ -345,7 +345,7 @@ const Wrapper = styled('div', {
 });
 
 const Header = styled('div', {
-  fontSize: '4vh',
+  fontSize: '1.75rem',
   fontWeight: 'bold',
   color: '#a0522d',
   marginBottom: '10px',

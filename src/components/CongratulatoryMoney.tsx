@@ -15,21 +15,21 @@
 // });
 
 // const Title = styled("p", {
-//   fontSize: "4vh",
+//   fontSize: "1.75rem",
 //   fontWeight: "bold",
 //   opacity: 0.85,
 //   marginBottom: 0,
 // });
 
 // const Content = styled("p", {
-//   fontSize: "2.5vh",
+//   fontSize: "1.125rem",
 //   lineHeight: 1.75,
 //   opacity: 0.75,
 //   marginBottom: 24,
 // });
 
 // const Description = styled("p", {
-//   fontSize: "2.5vh",
+//   fontSize: "1.125rem",
 //   lineHeight: 1.75,
 //   opacity: 0.65,
 //   marginTop: 8,
@@ -216,7 +216,7 @@
 //           .split("\n")
 //           .map((line, idx) => (
 //             <span key={idx} style={{
-//               fontSize: "2.5vh",
+//               fontSize: "1.125rem",
 //               display: "block",
 //               lineHeight: 1.7,
 //               marginBottom: "16px",  // ✅ 여기! 아랫 간격
@@ -247,21 +247,21 @@ const Wrapper = styled("div", {
 });
 
 const Title = styled("p", {
-  fontSize: "4vh",
+  fontSize: "1.75rem",
   fontWeight: "bold",
   opacity: 0.85,
   marginBottom: 0,
 });
 
 const Content = styled("p", {
-  fontSize: "2.5vh",
+  fontSize: "1.125rem",
   lineHeight: 1.75,
   opacity: 0.75,
   marginBottom: 24,
 });
 
 const Description = styled("p", {
-  fontSize: "2.5vh",
+  fontSize: "1.125rem",
   lineHeight: 1.75,
   opacity: 0.65,
   marginTop: 8,
@@ -272,13 +272,13 @@ const Description = styled("p", {
 const BlueHeader = styled("span", {
   color: "#3f51b5",
   fontWeight: "bold",
-  fontSize: "2.5vh",
+  fontSize: "1.125rem",
 });
 
 const PinkHeader = styled("span", {
   color: "#e91e63",
   fontWeight: "bold",
-  fontSize: "2.5vh",
+  fontSize: "1.125rem",
 });
 
 const HorizontalLine = styled("div", {
@@ -523,7 +523,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
             <span
               key={idx}
               style={{
-                fontSize: "2.5vh",
+                fontSize: "1.125rem",
                 display: "block",
                 lineHeight: 1.7,
                 marginBottom: "16px",  // ✅ 아랫 간격
