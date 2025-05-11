@@ -288,7 +288,7 @@ const ImageBackground = styled("div", {
   top: 0,
   left: 0,
   width: "100%",
-  height: "calc(var(--vh, 1vh) * 100)",
+  height: "100%",// "calc(var(--vh, 1vh) * 100)",
   backgroundImage: "url('./images/fig4.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center center",
