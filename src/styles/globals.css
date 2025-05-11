@@ -49,3 +49,14 @@ body {
     opacity: 1;
   }
 }
+
+/* react-photo-view 확대 방지 */
+.rpv-photo-view__photo-wrap {
+  touch-action: none !important;
+  overscroll-behavior: none !important;
+}
+
+.rpv-photo-view__photo-wrap img {
+  transform: none !important;
+  pointer-events: none;
+}
