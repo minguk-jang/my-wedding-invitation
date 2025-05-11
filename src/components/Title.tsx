@@ -359,24 +359,27 @@ const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
   useEffect(() => {
     if (!line1Full) return;
 
-    const interval1 = setInterval(() => {
-      setLine1Index((prev) => {
-        if (prev < line1Full.length - 1) {
-          return prev + 1;
-        } else {
-          clearInterval(interval1);
-          setTimeout(() => {
-            startSecondLine();
-          }, 100);
-          return prev;
-        }
-      });
-    }, 100);
+    let interval1: NodeJS.Timeout;
+    let interval2: NodeJS.Timeout;
 
-    const startSecondLine = () => {
-      const interval2 = setInterval(() => {
+    const typeLine1 = () => {
+      interval1 = setInterval(() => {
+        setLine1Index((prev) => {
+          if (prev < line1Full.length) {
+            return prev + 1;
+          } else {
+            clearInterval(interval1);
+            setTimeout(typeLine2, 300);
+            return prev;
+          }
+        });
+      }, 100);
+    };
+
+    const typeLine2 = () => {
+      interval2 = setInterval(() => {
         setLine2Index((prev) => {
-          if (prev < line2Full.length - 1) {
+          if (prev < line2Full.length) {
             return prev + 1;
           } else {
             clearInterval(interval2);
@@ -387,15 +390,18 @@ const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
       }, 100);
     };
 
+    typeLine1();
+
     return () => {
       clearInterval(interval1);
+      clearInterval(interval2);
     };
   }, [line1Full, line2Full, onDone]);
 
   return (
     <TypingTextWrapper>
-      <Line>{line1Full.slice(0, line1Index + 1)}</Line>
-      <Line>{line2Full.slice(0, line2Index + 1)}</Line>
+      <Line>{line1Full.slice(0, line1Index)}</Line>
+      <Line>{line2Full.slice(0, line2Index)}</Line>
     </TypingTextWrapper>
   );
 };
