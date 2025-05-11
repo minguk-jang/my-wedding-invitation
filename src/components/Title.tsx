@@ -70,7 +70,7 @@
 //   display: "flex",
 //   alignItems: "center",
 //   justifyContent: "center",
-//   fontSize: "6vh",
+//   fontSize: "5vh",
 //   fontFamily: "'Lazy Ride Script', cursive",
 //   letterSpacing: "0.1em",
 //   transition: "opacity 1s ease",
@@ -80,12 +80,21 @@
 // // 타이핑 텍스트 스타일
 // const TypingTextWrapper = styled("div", {
 //   fontFamily: "'Lazy Ride Script', cursive",
-//   fontSize: "4vh",
-//   color: "#fff",
+//   fontSize: "5vh",
+//   color:  "#f8f5f0",//"#fff",
 //   letterSpacing: "0.1em",
 //   textAlign: "center",
-//   lineHeight: "1.4",
+//   lineHeight: "1.5",
+//   display: "flex",
+//   flexDirection: "column",
+//   justifyContent: "center",
+//   whiteSpace: "pre-line",
 // });
+
+// const Line = styled("div", {
+//   minHeight: "1em", // 고정 높이 확보
+// });
+
 
 // // 오른쪽 위 음향 버튼
 // const MusicButton = styled("button", {
@@ -114,26 +123,64 @@
 // });
 
 // // 타이핑 텍스트 컴포넌트
-// const TypingText: React.FC<{ text: string; onDone: () => void }> = ({ text, onDone }) => {
-//   const [displayedText, setDisplayedText] = useState("");
+// const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
+//   lines,
+//   onDone,
+// }) => {
+//   const [line1Index, setLine1Index] = useState(0);
+//   const [line2Index, setLine2Index] = useState(0);
+
+//   const line1Full = lines[0] ?? "";
+//   const line2Full = lines[1] ?? "";
 
 //   useEffect(() => {
-//     let i = 0;
-//     const interval = setInterval(() => {
-//       if (i < text.length) {
-//         const char = text[i];
-//         setDisplayedText((prev) => prev + char);
-//         i++;
-//       } else {
-//         clearInterval(interval);
-//         setTimeout(onDone, 1000); // 타이핑 끝난 후 1초 대기
-//       }
-//     }, 100);
+//     if (!line1Full) return;
 
-//     return () => clearInterval(interval);
-//   }, [text, onDone]);
+//     let interval1: NodeJS.Timeout;
+//     let interval2: NodeJS.Timeout;
 
-//   return <TypingTextWrapper>{displayedText}</TypingTextWrapper>;
+//     const typeLine1 = () => {
+//       interval1 = setInterval(() => {
+//         setLine1Index((prev) => {
+//           if (prev < line1Full.length) {
+//             return prev + 1;
+//           } else {
+//             clearInterval(interval1);
+//             setTimeout(typeLine2, 300);
+//             return prev;
+//           }
+//         });
+//       }, 100);
+//     };
+
+//     const typeLine2 = () => {
+//       interval2 = setInterval(() => {
+//         setLine2Index((prev) => {
+//           if (prev < line2Full.length) {
+//             return prev + 1;
+//           } else {
+//             clearInterval(interval2);
+//             setTimeout(onDone, 1000);
+//             return prev;
+//           }
+//         });
+//       }, 100);
+//     };
+
+//     typeLine1();
+
+//     return () => {
+//       clearInterval(interval1);
+//       clearInterval(interval2);
+//     };
+//   }, [line1Full, line2Full, onDone]);
+
+//   return (
+//     <TypingTextWrapper>
+//       <Line>{line1Full.slice(0, line1Index)}</Line>
+//       <Line>{line2Full.slice(0, line2Index)}</Line>
+//     </TypingTextWrapper>
+//   );
 // };
 
 // type TitleProps = {
@@ -190,7 +237,10 @@
 
 //       {showIntro && (
 //         <IntroOverlay>
-//           <TypingText text="Here begins their happily ever after" onDone={handleIntroEnd} />
+//           <TypingText
+//             lines={["Here begins", "their happily ever after"]}
+//             onDone={handleIntroEnd}
+//           />
 //         </IntroOverlay>
 //       )}
 
@@ -227,7 +277,7 @@ import { styled } from "@stitches/react";
 // 기본 레이아웃 스타일
 const Layout = styled("div", {
   width: "100%",
-  height: "100vh",
+  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
   overflow: "hidden",
   margin: "0px auto",
   position: "relative",
@@ -239,7 +289,7 @@ const ImageBackground = styled("div", {
   top: 0,
   left: 0,
   width: "100%",
-  height: "100%",
+  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
   backgroundImage: "url('./images/fig4.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center center",
@@ -276,8 +326,8 @@ const Schedule = styled("p", {
   fontSize: "3vh",
   opacity: 0.65,
   marginBottom: 24,
-  lineHeight: "1.1",         // ✅ 줄 간격 줄임
-  letterSpacing: "-0.03em",  // ✅ 자간 줄임
+  lineHeight: "1.1",
+  letterSpacing: "-0.03em",
 });
 
 // 인트로 오버레이 스타일
@@ -286,7 +336,7 @@ const IntroOverlay = styled("div", {
   top: 0,
   left: 0,
   width: "100%",
-  height: "100%",
+  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   color: "#f8f5f0",
   zIndex: 2,
@@ -304,7 +354,7 @@ const IntroOverlay = styled("div", {
 const TypingTextWrapper = styled("div", {
   fontFamily: "'Lazy Ride Script', cursive",
   fontSize: "5vh",
-  color:  "#f8f5f0",//"#fff",
+  color: "#f8f5f0",
   letterSpacing: "0.1em",
   textAlign: "center",
   lineHeight: "1.5",
@@ -315,16 +365,15 @@ const TypingTextWrapper = styled("div", {
 });
 
 const Line = styled("div", {
-  minHeight: "1em", // 고정 높이 확보
+  minHeight: "1em",
 });
-
 
 // 오른쪽 위 음향 버튼
 const MusicButton = styled("button", {
   position: "fixed",
   top: 20,
   right: 20,
-  zIndex: 3, // 오버레이보다 위
+  zIndex: 3,
   background: "transparent",
   border: "none",
   fontSize: "3vh",
@@ -333,16 +382,15 @@ const MusicButton = styled("button", {
 });
 
 const WeddingTitle = styled("div", {
-  // fontFamily: "'Playfair Display', serif",
   fontSize: "9vh",
   fontWeight: 400,
-  color: "#f8f5f0", // #fdf6f0, 	#d9d4ce, #f6f1eb
+  color: "#f8f5f0",
   textAlign: "center",
   lineHeight: "0.9",
   letterSpacing: "-0.05em",
   zIndex: 1,
   whiteSpace: "pre-line",
-  textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)", // ✔️ 어두운 배경 대비 향상 (선택)
+  textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
 });
 
 // 타이핑 텍스트 컴포넌트
@@ -406,11 +454,6 @@ const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
   );
 };
 
-
-
-
-
-
 type TitleProps = {
   data?: Data;
 };
@@ -422,12 +465,10 @@ export default function Title({ data }: TitleProps) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
-    // 오디오 객체 생성
     audioRef.current = new Audio("./music/hong.mp3");
-    audioRef.current.loop = true; // 반복 재생
+    audioRef.current.loop = true;
 
     return () => {
-      // 페이지 나갈 때 오디오 정리
       if (audioRef.current) {
         audioRef.current.pause();
         audioRef.current = null;
@@ -435,7 +476,6 @@ export default function Title({ data }: TitleProps) {
     };
   }, []);
 
-  // 인트로 끝나면 호출
   const handleIntroEnd = () => {
     setShowIntro(false);
     if (audioRef.current) {
@@ -447,7 +487,6 @@ export default function Title({ data }: TitleProps) {
     }
   };
 
-  // 음악 토글
   const toggleMusic = () => {
     if (!audioRef.current) return;
     if (audioRef.current.paused) {
@@ -475,13 +514,9 @@ export default function Title({ data }: TitleProps) {
       {!showIntro && (
         <>
           <TitleWrapper>
-          <WeddingTitle>
+            <WeddingTitle>
               OUR{"\n"}WEDDING{"\n"}DAY
             </WeddingTitle>
-            {/* <WeddingInvitation>WEDDING INVITATION</WeddingInvitation> */}
-            {/* <GroomBride>
-              {data?.groom?.name} ❤ {data?.bride?.name}
-            </GroomBride> */}
             <Schedule>
               {data?.date}
               <br />
@@ -489,7 +524,6 @@ export default function Title({ data }: TitleProps) {
             </Schedule>
           </TitleWrapper>
 
-          {/* 오른쪽 위 음악 버튼 */}
           <MusicButton onClick={toggleMusic}>
             {isPlaying ? "🔊" : "🔇"}
           </MusicButton>
