@@ -389,21 +389,84 @@ const WeddingTitle = styled("div", {
   textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
 });
 
+// const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
+//   lines,
+//   onDone,
+// }) => {
+//   const [line1Index, setLine1Index] = useState(0);
+//   const [line2Index, setLine2Index] = useState(0);
+
+//   const line1Full = lines[0] ?? "";
+//   const line2Full = lines[1] ?? "";
+
+//   useEffect(() => {
+//     if (!line1Full) return;
+
+//     let interval1: NodeJS.Timeout;
+//     let interval2: NodeJS.Timeout;
+
+//     const typeLine1 = () => {
+//       interval1 = setInterval(() => {
+//         setLine1Index((prev) => {
+//           if (prev < line1Full.length) {
+//             return prev + 1;
+//           } else {
+//             clearInterval(interval1);
+//             setTimeout(typeLine2, 300);
+//             return prev;
+//           }
+//         });
+//       }, 100);
+//     };
+
+//     const typeLine2 = () => {
+//       interval2 = setInterval(() => {
+//         setLine2Index((prev) => {
+//           if (prev < line2Full.length) {
+//             return prev + 1;
+//           } else {
+//             clearInterval(interval2);
+//             setTimeout(onDone, 1000);
+//             return prev;
+//           }
+//         });
+//       }, 100);
+//     };
+
+//     typeLine1();
+
+//     return () => {
+//       clearInterval(interval1);
+//       clearInterval(interval2);
+//     };
+//   }, [line1Full, line2Full, onDone]);
+
+//   return (
+//     <TypingTextWrapper>
+//       <Line>{line1Full.slice(0, line1Index)}</Line>
+//       <Line>{line2Full.slice(0, line2Index)}</Line>
+//     </TypingTextWrapper>
+//   );
+// };
+
 const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
   lines,
   onDone,
 }) => {
   const [line1Index, setLine1Index] = useState(0);
   const [line2Index, setLine2Index] = useState(0);
+  const [line3Index, setLine3Index] = useState(0);
 
   const line1Full = lines[0] ?? "";
   const line2Full = lines[1] ?? "";
+  const line3Full = lines[2] ?? "";
 
   useEffect(() => {
     if (!line1Full) return;
 
     let interval1: NodeJS.Timeout;
     let interval2: NodeJS.Timeout;
+    let interval3: NodeJS.Timeout;
 
     const typeLine1 = () => {
       interval1 = setInterval(() => {
@@ -426,6 +489,20 @@ const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
             return prev + 1;
           } else {
             clearInterval(interval2);
+            setTimeout(typeLine3, 300);
+            return prev;
+          }
+        });
+      }, 100);
+    };
+
+    const typeLine3 = () => {
+      interval3 = setInterval(() => {
+        setLine3Index((prev) => {
+          if (prev < line3Full.length) {
+            return prev + 1;
+          } else {
+            clearInterval(interval3);
             setTimeout(onDone, 1000);
             return prev;
           }
@@ -438,16 +515,19 @@ const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
     return () => {
       clearInterval(interval1);
       clearInterval(interval2);
+      clearInterval(interval3);
     };
-  }, [line1Full, line2Full, onDone]);
+  }, [line1Full, line2Full, line3Full, onDone]);
 
   return (
     <TypingTextWrapper>
       <Line>{line1Full.slice(0, line1Index)}</Line>
       <Line>{line2Full.slice(0, line2Index)}</Line>
+      <Line>{line3Full.slice(0, line3Index)}</Line>
     </TypingTextWrapper>
   );
 };
+
 
 type TitleProps = {
   data?: Data;
@@ -499,7 +579,7 @@ export default function Title({ data }: TitleProps) {
       {showIntro && (
         <IntroOverlay>
           <TypingText
-            lines={["Here begins", "their happily ever after"]}
+            lines={["Here begins", "their happily", "ever after"]}
             onDone={handleIntroEnd}
           />
         </IntroOverlay>
