@@ -137,7 +137,7 @@ export default function Gallery() {
             {groupedImages.map((group, groupIdx) => (
               <Column key={groupIdx}>
                 {group.map((src, idx) => (
-                  <PhotoView key={idx} src={src}>
+                  <PhotoView key={idx} src={src} disableZoom>
                     <StyledImage src={src} alt={`image${groupIdx * 2 + idx + 1}`} />
                   </PhotoView>
                 ))}
