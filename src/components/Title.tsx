@@ -270,14 +270,13 @@
 //     </Layout>
 //   );
 // }
-
 import React, { useEffect, useState, useRef } from "react";
 import { styled } from "@stitches/react";
 
 // 기본 레이아웃 스타일
 const Layout = styled("div", {
   width: "100%",
-  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
+  height: "calc(var(--vh, 1vh) * 100)",
   overflow: "hidden",
   margin: "0px auto",
   position: "relative",
@@ -289,7 +288,7 @@ const ImageBackground = styled("div", {
   top: 0,
   left: 0,
   width: "100%",
-  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
+  height: "calc(var(--vh, 1vh) * 100)",
   backgroundImage: "url('./images/fig4.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center center",
@@ -308,52 +307,50 @@ const TitleWrapper = styled("div", {
   zIndex: 1,
 });
 
-// 텍스트 스타일
+// 텍스트 스타일 (vh → rem 변환)
 const WeddingInvitation = styled("p", {
-  fontSize: "2vh",
+  fontSize: "0.875rem", // 2vh
   opacity: 0.45,
   marginBottom: 16,
 });
 
 const GroomBride = styled("p", {
-  fontSize: "4vh",
+  fontSize: "1.75rem", // 4vh
   fontWeight: "bold",
   opacity: 0.9,
   marginBottom: 16,
 });
 
 const Schedule = styled("p", {
-  fontSize: "3vh",
+  fontSize: "1.3125rem", // 3vh
   opacity: 0.65,
   marginBottom: 24,
   lineHeight: "1.1",
   letterSpacing: "-0.03em",
 });
 
-// 인트로 오버레이 스타일
 const IntroOverlay = styled("div", {
   position: "absolute",
   top: 0,
   left: 0,
   width: "100%",
-  height: "calc(var(--vh, 1vh) * 100)", // ✅ 수정됨
+  height: "calc(var(--vh, 1vh) * 100)",
   backgroundColor: "rgba(0, 0, 0, 0.6)",
   color: "#f8f5f0",
   zIndex: 2,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  fontSize: "5vh",
+  fontSize: "2.1875rem", // 5vh
   fontFamily: "'Lazy Ride Script', cursive",
   letterSpacing: "0.1em",
   transition: "opacity 1s ease",
   fontWeight: "bold",
 });
 
-// 타이핑 텍스트 스타일
 const TypingTextWrapper = styled("div", {
   fontFamily: "'Lazy Ride Script', cursive",
-  fontSize: "5vh",
+  fontSize: "2.1875rem", // 5vh
   color: "#f8f5f0",
   letterSpacing: "0.1em",
   textAlign: "center",
@@ -368,7 +365,6 @@ const Line = styled("div", {
   minHeight: "1em",
 });
 
-// 오른쪽 위 음향 버튼
 const MusicButton = styled("button", {
   position: "fixed",
   top: 20,
@@ -376,13 +372,13 @@ const MusicButton = styled("button", {
   zIndex: 3,
   background: "transparent",
   border: "none",
-  fontSize: "3vh",
+  fontSize: "1.75rem", // 3vh
   color: "white",
   cursor: "pointer",
 });
 
 const WeddingTitle = styled("div", {
-  fontSize: "9vh",
+  fontSize: "3.9375rem", // 9vh
   fontWeight: 400,
   color: "#f8f5f0",
   textAlign: "center",
@@ -393,7 +389,6 @@ const WeddingTitle = styled("div", {
   textShadow: "0 2px 4px rgba(0, 0, 0, 0.3)",
 });
 
-// 타이핑 텍스트 컴포넌트
 const TypingText: React.FC<{ lines: string[]; onDone: () => void }> = ({
   lines,
   onDone,
@@ -458,7 +453,6 @@ type TitleProps = {
   data?: Data;
 };
 
-// 메인 컴포넌트
 export default function Title({ data }: TitleProps) {
   const [showIntro, setShowIntro] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
