@@ -1,12 +1,13 @@
 {
-  "name": "wedding-invitation",
+  "name": "my-wedding-invitation",
   "version": "1.0.1",
-  "description": "KyuHyuk Lee🤵 ❤ Jungwon Byeon👰 Wedding Invitation💌",
+  "description": "Minguk Jang🤵 ❤ Juyeon Lee👰 Wedding Invitation💌",
   "main": "index.js",
-  "repository": "https://github.com/LeeKyuHyuk/wedding-invitation.git",
-  "author": "KyuHyuk Lee <lee@kyuhyuk.kr>",
+  "repository": "https://github.com/minguk-jang/my-wedding-invitation.git",
+  "author": "Minguk jang <mgjang0706@gmail.com>",
   "license": "MIT",
   "private": true,
+  "homepage": "https://minguk-jang.github.io/my-wedding-invitation/",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
