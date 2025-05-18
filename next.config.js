@@ -25,3 +25,5 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
+console.log("🚀 NEXT CONFIG OUTPUT:", nextConfig);
+
