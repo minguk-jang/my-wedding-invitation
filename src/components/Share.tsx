@@ -25,7 +25,6 @@ const ButtonGroup = styled("div", {
   gap: "16px",
   flexWrap: "wrap",
   marginTop: "24px",
-  height: "auto",
 });
 
 const KakaoTalkShareButton = styled(Button, {
@@ -34,7 +33,12 @@ const KakaoTalkShareButton = styled(Button, {
   color: "#181600",
   fontWeight: "bold",
   minWidth: "160px",
-  height: "auto",
+  height: "40px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "6px 15px",
+  fontSize: "14px",
   "&:hover": {
     backgroundColor: "#fcf07e !important",
     borderColor: "#fcf07e !important",
@@ -53,7 +57,12 @@ const LinkShareButton = styled(Button, {
   color: "#ffffff",
   fontWeight: "bold",
   minWidth: "160px",
-  height: "auto",
+  height: "40px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  padding: "6px 15px",
+  fontSize: "14px",
   "&:hover": {
     backgroundColor: "#9fcbed !important",
     borderColor: "#9fcbed !important",
