@@ -1,12 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  basePath: '/my-wedding-invitation',
-  assetPrefix: '/my-wedding-invitation/',
-  trailingSlash: true,
   images: {
     unoptimized: true,
   },
+  basePath: '/my-wedding-invitation',
+  assetPrefix: '/my-wedding-invitation/',
+  trailingSlash: true,
   reactStrictMode: true,
 };
 
