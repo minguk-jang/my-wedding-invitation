@@ -514,7 +514,7 @@ export default function Gretting({ data }: GrettingProps) {
         <PhotoContainer>
           <Person>
             <Image
-              src={`${basePath}/images/groom-photo.jpeg`} // ✅ basePath 포함
+              src={`${basePath}/images/groom-photo.png`} // ✅ basePath 포함
               alt="신랑 사진"
               width={160}
               height={160}
@@ -532,7 +532,7 @@ export default function Gretting({ data }: GrettingProps) {
           </Person>
           <Person>
             <Image
-              src={`${basePath}/images/bride-photo.jpeg`} // ✅ basePath 포함
+              src={`${basePath}/images/bride-photo.png`} // ✅ basePath 포함
               alt="신부 사진"
               width={160}
               height={160}
