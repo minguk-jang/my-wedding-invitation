@@ -83,13 +83,35 @@ export default function Share({ data }: ShareProps) {
   const GITHUB_PAGES_URL = "https://minguk-jang.github.io/my-wedding-invitation";
 
   useEffect(() => {
-    if (typeof window !== 'undefined' && !window.Kakao.isInitialized()) {
-      window.Kakao.init(data?.kakaotalk?.api_token);
+    const initKakao = () => {
+      try {
+        if (typeof window !== 'undefined' && window.Kakao) {
+          if (!window.Kakao.isInitialized()) {
+            window.Kakao.init(data?.kakaotalk?.api_token);
+          }
+        }
+      } catch (error) {
+        console.error('Kakao init error:', error);
+      }
+    };
+
+    // Kakao SDK가 로드된 후 초기화
+    if (document.readyState === 'complete') {
+      initKakao();
+    } else {
+      window.addEventListener('load', initKakao);
+      return () => window.removeEventListener('load', initKakao);
     }
   }, [data?.kakaotalk?.api_token]);
 
   const handleKakaoShare = () => {
     try {
+      if (!window.Kakao?.Share) {
+        console.error('Kakao SDK not loaded');
+        message.error('카카오톡 공유 기능을 불러오는 중 오류가 발생했습니다.');
+        return;
+      }
+
       window.Kakao.Share.sendDefault({
         objectType: "feed",
         content: {

@@ -14,6 +14,11 @@ export default function Document() {
           href="https://cdn.jsdelivr.net/gh/fonts-archive/AppleSDGothicNeo/AppleSDGothicNeo.css"
           type="text/css"
         />
+        <script
+          src="https://developers.kakao.com/sdk/js/kakao.min.js"
+          async
+          defer
+        ></script>
       </Head>
       <body style={{ backgroundColor: "#efebe9" }}>
         <Main />

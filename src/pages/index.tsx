@@ -2,7 +2,6 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { styled } from "@stitches/react";
 import JsonData from "@/data.json";
-import Script from "next/script";
 
 const Title = dynamic(() => import("@/components/Title"), { ssr: false });
 const Gretting = dynamic(() => import("@/components/Gretting"), { ssr: false });
@@ -47,11 +46,6 @@ export default function Home() {
         <meta name="theme-color" content="#BCAAA4" />
         <title>장민국❤이주연 결혼식에 초대합니다</title>
       </Head>
-
-      <Script 
-        src="https://developers.kakao.com/sdk/js/kakao.min.js" 
-        strategy="afterInteractive"
-      />
 
       <main>
         <CenteredContainer>
