@@ -22,6 +22,9 @@ const nextConfig = {
   basePath: isProd ? '/my-wedding-invitation' : '',
   assetPrefix: isProd ? '/my-wedding-invitation/' : '',
   trailingSlash: true,
+  images: {
+    unoptimized: true,
+  },
 };
 
 module.exports = nextConfig;
