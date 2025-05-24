@@ -1,157 +1,6 @@
-
-// import { LinkOutlined, MessageFilled } from "@ant-design/icons";
-// import { styled } from "@stitches/react";
-// import { Button, Divider, message } from "antd";
-// import { useEffect } from "react";
-// import CopyToClipboard from "react-copy-to-clipboard";
-// import { motion } from "framer-motion"; // Framer Motion 추가
-
-// declare global {
-//   interface Window {
-//     Kakao: any;
-//   }
-// }
-
-// const Wrapper = styled("div", {
-//   background: "#efebe9",
-//   backgroundImage: "url(./assets/GroovePaper.png)",
-//   width: "100%",
-//   paddingBottom: 72,
-//   textAlign: "center",
-// });
-
-// const Title = styled("p", {
-//   fontSize: "1.75rem", // ✅ vh 대신 px 고정
-//   fontWeight: "bold",
-//   opacity: 0.85,
-//   marginBottom: 0,
-// });
-
-// const ButtonGroup = styled("div", {
-//   display: "flex",
-//   justifyContent: "center",
-//   alignItems: "center",
-//   gap: "16px",          // 버튼 간격
-//   flexWrap: "wrap",     // 화면 좁으면 줄바꿈
-//   marginTop: "24px",
-// });
-
-// const KakaoTalkShareButton = styled(Button, {
-//   background: "#fee500",
-//   borderColor: "#fee500",
-//   color: "#181600",
-//   fontWeight: "bold",
-//   minWidth: "160px",     // 버튼 최소 너비
-//   "&:hover": {
-//     backgroundColor: "#fcf07e !important",
-//     borderColor: "#fcf07e !important",
-//     color: "#17160b !important",
-//   },
-//   "&:focus": {
-//     backgroundColor: "#fcf07e !important",
-//     borderColor: "#fcf07e !important",
-//     color: "#17160b !important",
-//   },
-// });
-
-// const LinkShareButton = styled(Button, {
-//   background: "#53acee",
-//   borderColor: "#53acee",
-//   color: "#ffffff",
-//   fontWeight: "bold",
-//   minWidth: "160px",    // 버튼 최소 너비
-//   "&:hover": {
-//     backgroundColor: "#9fcbed !important",
-//     borderColor: "#9fcbed !important",
-//     color: "#ffffff !important",
-//   },
-//   "&:focus": {
-//     backgroundColor: "#9fcbed !important",
-//     borderColor: "#9fcbed !important",
-//     color: "#ffffff !important",
-//   },
-// });
-
-// type ShareProps = {
-//   data?: Data;
-// };
-
-// export default function Share({ data }: ShareProps) {
-//   const handleKakaoShare = () => {
-//     try {
-//       if (!window.Kakao.isInitialized()) {
-//         window.Kakao.init(data?.kakaotalk?.api_token);
-//       }
-
-//       window.Kakao.Link.sendDefault({
-//         objectType: "feed",
-//         content: {
-//           title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
-//           description: "아래의 '청첩장 열기' 버튼을 눌러 읽어주세요🤵👰",
-//           imageUrl: data?.kakaotalk?.share_image,
-//           link: {
-//             mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
-//             webUrl: data?.kakaotalk?.wedding_invitation_url,
-//           },
-//         },
-//         buttons: [
-//           {
-//             title: "청첩장 열기",
-//             link: {
-//               mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
-//               webUrl: data?.kakaotalk?.wedding_invitation_url,
-//             },
-//           },
-//         ],
-//       });
-
-//       message.success("카카오톡으로 청첩장을 공유합니다!");
-//     } catch (error) {
-//       console.error("카카오톡 공유 오류:", error);
-//       message.error("카카오톡 공유에 실패했습니다.");
-//     }
-//   };
-
-//   return (
-//     <Wrapper>
-//       <motion.div
-//         initial={{ opacity: 0, y: 50 }}
-//         whileInView={{ opacity: 1, y: 0 }}
-//         viewport={{ once: true, amount: 0.5 }}
-//         transition={{ duration: 1.2 }}
-//       >
-//         <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-//           <Title>청첩장 공유하기</Title>
-//         </Divider>
-
-//         <ButtonGroup>
-//           <KakaoTalkShareButton
-//             icon={<MessageFilled />}
-//             size="large"
-//             onClick={handleKakaoShare}
-//           >
-//             카카오톡으로 공유하기
-//           </KakaoTalkShareButton>
-
-//           <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
-//             <LinkShareButton
-//               icon={<LinkOutlined />}
-//               size="large"
-//               onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
-//             >
-//               링크로 공유하기
-//             </LinkShareButton>
-//           </CopyToClipboard>
-//         </ButtonGroup>
-//       </motion.div>
-//     </Wrapper>
-//   );
-// }
-
 import { LinkOutlined, MessageFilled } from "@ant-design/icons";
 import { styled } from "@stitches/react";
 import { Button, Divider, message } from "antd";
-import { useRouter } from "next/router"; // ✅ basePath 사용
 import { useEffect } from "react";
 import CopyToClipboard from "react-copy-to-clipboard";
 import { motion } from "framer-motion";
@@ -176,6 +25,7 @@ const ButtonGroup = styled("div", {
   gap: "16px",
   flexWrap: "wrap",
   marginTop: "24px",
+  height: "auto",
 });
 
 const KakaoTalkShareButton = styled(Button, {
@@ -184,6 +34,7 @@ const KakaoTalkShareButton = styled(Button, {
   color: "#181600",
   fontWeight: "bold",
   minWidth: "160px",
+  height: "auto",
   "&:hover": {
     backgroundColor: "#fcf07e !important",
     borderColor: "#fcf07e !important",
@@ -202,6 +53,7 @@ const LinkShareButton = styled(Button, {
   color: "#ffffff",
   fontWeight: "bold",
   minWidth: "160px",
+  height: "auto",
   "&:hover": {
     backgroundColor: "#9fcbed !important",
     borderColor: "#9fcbed !important",
@@ -219,31 +71,33 @@ type ShareProps = {
 };
 
 export default function Share({ data }: ShareProps) {
-  const { basePath } = useRouter(); // ✅ basePath 가져오기
+  const GITHUB_PAGES_URL = "https://minguk-jang.github.io/my-wedding-invitation";
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && !window.Kakao.isInitialized()) {
+      window.Kakao.init(data?.kakaotalk?.api_token);
+    }
+  }, [data?.kakaotalk?.api_token]);
 
   const handleKakaoShare = () => {
     try {
-      if (!window.Kakao.isInitialized()) {
-        window.Kakao.init(data?.kakaotalk?.api_token);
-      }
-
-      window.Kakao.Link.sendDefault({
+      window.Kakao.Share.sendDefault({
         objectType: "feed",
         content: {
           title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
           description: "아래의 '청첩장 열기' 버튼을 눌러 읽어주세요🤵👰",
-          imageUrl: data?.kakaotalk?.share_image,
+          imageUrl: `${GITHUB_PAGES_URL}/images/fig1.jpeg`,
           link: {
-            mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
-            webUrl: data?.kakaotalk?.wedding_invitation_url,
+            mobileWebUrl: GITHUB_PAGES_URL,
+            webUrl: GITHUB_PAGES_URL,
           },
         },
         buttons: [
           {
             title: "청첩장 열기",
             link: {
-              mobileWebUrl: data?.kakaotalk?.wedding_invitation_url,
-              webUrl: data?.kakaotalk?.wedding_invitation_url,
+              mobileWebUrl: GITHUB_PAGES_URL,
+              webUrl: GITHUB_PAGES_URL,
             },
           },
         ],
@@ -257,46 +111,35 @@ export default function Share({ data }: ShareProps) {
   };
 
   return (
-    <div
-      style={{
-        background: "#efebe9",
-        backgroundImage: `url(${basePath}/assets/GroovePaper.png)`, // ✅ basePath 적용
-        backgroundRepeat: "repeat",
-        width: "100%",
-        paddingBottom: 72,
-        textAlign: "center",
-      }}
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.5 }}
+      transition={{ duration: 1.2 }}
     >
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 1.2 }}
-      >
-        <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
-          <Title>청첩장 공유하기</Title>
-        </Divider>
+      <Divider plain style={{ marginTop: 0, marginBottom: 32 }}>
+        <Title>청첩장 공유하기</Title>
+      </Divider>
 
-        <ButtonGroup>
-          <KakaoTalkShareButton
-            icon={<MessageFilled />}
+      <ButtonGroup>
+        <KakaoTalkShareButton
+          icon={<MessageFilled />}
+          size="large"
+          onClick={handleKakaoShare}
+        >
+          카카오톡으로 공유하기
+        </KakaoTalkShareButton>
+
+        <CopyToClipboard text={GITHUB_PAGES_URL}>
+          <LinkShareButton
+            icon={<LinkOutlined />}
             size="large"
-            onClick={handleKakaoShare}
+            onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
           >
-            카카오톡으로 공유하기
-          </KakaoTalkShareButton>
-
-          <CopyToClipboard text={data?.kakaotalk?.wedding_invitation_url ?? ""}>
-            <LinkShareButton
-              icon={<LinkOutlined />}
-              size="large"
-              onClick={() => message.success("청첩장 링크가 복사되었습니다.")}
-            >
-              링크로 공유하기
-            </LinkShareButton>
-          </CopyToClipboard>
-        </ButtonGroup>
-      </motion.div>
-    </div>
+            링크로 공유하기
+          </LinkShareButton>
+        </CopyToClipboard>
+      </ButtonGroup>
+    </motion.div>
   );
 }

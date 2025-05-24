@@ -1,7 +1,14 @@
+:root {
+  --vh: 1vh;
+}
+
 html,
 body {
-  padding: 0;
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
   margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 /* 수정전 */
@@ -12,6 +19,8 @@ body {
 } */
 * {
   font-family: 'Apple SD Gothic Neo', 'NanumBarunGothic', 'Malgun Gothic', '맑은 고딕', '돋움', 'Dotum', sans-serif;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 @keyframes fadein {
@@ -59,4 +68,10 @@ body {
 .rpv-photo-view__photo-wrap img {
   transform: none !important;
   pointer-events: none;
+}
+
+/* 모바일 브라우저 주소창 대응 */
+.full-height {
+  height: 100vh; /* Fallback */
+  height: calc(var(--vh, 1vh) * 100);
 }
