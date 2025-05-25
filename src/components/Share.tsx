@@ -122,7 +122,7 @@ export default function Share({ data }: ShareProps) {
       }
 
       window.Kakao.Share.sendDefault({
-        objectType: "feed",
+        objectType: "calendar",
         content: {
           title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
           description: "2025년 8월 23일 토요일 낮 12시 30분\n아펠가모 반포",
@@ -131,15 +131,6 @@ export default function Share({ data }: ShareProps) {
             mobileWebUrl: GITHUB_PAGES_URL,
             webUrl: GITHUB_PAGES_URL,
           },
-        },
-        itemContent: {
-          profileText: "Wedding Invitation",
-          profileImageUrl: `${GITHUB_PAGES_URL}/images/fig1.jpeg`,
-        },
-        social: {
-          likeCount: 0,
-          commentCount: 0,
-          sharedCount: 0,
         },
         buttons: [
           {
@@ -150,12 +141,10 @@ export default function Share({ data }: ShareProps) {
             },
           },
         ],
-        scheduleInfo: {
-          title: "장민국❤이주연 결혼식",
-          schedule: "2025-08-23 12:30:00",
-          scheduleEndTime: "2025-08-23 15:00:00",
-          location: "아펠가모 반포"
-        }
+        scheduleTitle: "장민국❤이주연 결혼식",
+        scheduleStartTime: "2025-08-23T12:30:00+09:00",
+        scheduleEndTime: "2025-08-23T15:00:00+09:00",
+        schedulePlace: "아펠가모 반포"
       });
 
       message.success("카카오톡으로 청첩장을 공유합니다!");
