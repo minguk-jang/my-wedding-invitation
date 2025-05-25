@@ -79,15 +79,22 @@ const ButtonGroup = styled("div", {
   marginTop: "4px",
 });
 
-const KakaoPayButton = styled(Button, {
-  background: "#ffeb00",
-  borderColor: "#ffeb00",
+const KakaoShareButton = styled(Button, {
+  background: "#fee500",
+  borderColor: "#fee500",
   color: "#181600",
   "&:hover": {
-    background: "#ffe100 !important",
-    borderColor: "#ffe100 !important",
+    background: "#fcf07e !important",
+    borderColor: "#fcf07e !important",
     color: "#181600 !important",
   },
+});
+
+const HorizontalLine = styled("div", {
+  width: "90%",
+  height: "1px",
+  backgroundColor: "#cfc6bd",
+  margin: "12px auto",
 });
 
 type CongratulatoryMoneyProps = {
@@ -128,9 +135,9 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
   }, []);
 
   const handleKakaoPay = (name: string, accountNumber: string) => {
-    // 카카오페이 송금 URL 스킴
-    const kakaoPayUrl = `kakaotalk://kakaopay/money/to/bank/${accountNumber}`;
-    window.location.href = kakaoPayUrl;
+    // 카카오톡 송금 URL 스킴으로 변경
+    const kakaoSendUrl = `kakaotalk://send?text=${encodeURIComponent(`${name}님께 축의금 보내기\n계좌번호: ${accountNumber}`)}`;
+    window.location.href = kakaoSendUrl;
   };
 
   const renderAccountInfo = (
@@ -139,28 +146,31 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
     label: string,
     color: string
   ) => (
-    <VerticalInfo>
-      <p style={{ color: color, marginBottom: 2 }}><b>{label}</b></p>
-      <ButtonGroup>
-        <CopyToClipboard
-          text={accountNumber}
-          onCopy={() => message.success("계좌번호가 복사되었습니다.")}
-        >
-          <Button type="text" style={{ padding: "4px 8px", color: "black" }}>
-            {accountNumber}
-          </Button>
-        </CopyToClipboard>
-        {isMobile && (
-          <KakaoPayButton
-            size="small"
-            onClick={() => handleKakaoPay(name, accountNumber)}
+    <>
+      <HorizontalLine />
+      <VerticalInfo>
+        <p style={{ color: color, marginBottom: 2 }}><b>{label}</b></p>
+        <ButtonGroup>
+          <CopyToClipboard
+            text={accountNumber}
+            onCopy={() => message.success("계좌번호가 복사되었습니다.")}
           >
-            카카오페이 송금
-          </KakaoPayButton>
-        )}
-      </ButtonGroup>
-      <p style={{ color: "black", marginBottom: 0 }}>{name}</p>
-    </VerticalInfo>
+            <Button type="text" style={{ padding: "4px 8px", color: "black" }}>
+              {accountNumber}
+            </Button>
+          </CopyToClipboard>
+          {isMobile && (
+            <KakaoShareButton
+              size="small"
+              onClick={() => handleKakaoPay(name, accountNumber)}
+            >
+              카카오톡으로 공유
+            </KakaoShareButton>
+          )}
+        </ButtonGroup>
+        <p style={{ color: "black", marginBottom: 0 }}>{name}</p>
+      </VerticalInfo>
+    </>
   );
 
   return (
@@ -204,6 +214,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               "신랑 어머니",
               "#3f51b5"
             )}
+            <HorizontalLine />
             <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
           </Panel>
 
@@ -226,6 +237,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               "신부 어머니",
               "#e91e63"
             )}
+            <HorizontalLine />
             <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
           </Panel>
         </CustomCollapse>
