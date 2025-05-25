@@ -25,7 +25,7 @@ const ButtonGroup = styled("div", {
   gap: "16px",
   flexWrap: "wrap",
   marginTop: "24px",
-  marginBottom: "48px",
+  marginBottom: "24px",
 });
 
 const KakaoTalkShareButton = styled(Button, {
