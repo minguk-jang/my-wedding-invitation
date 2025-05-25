@@ -80,28 +80,33 @@ const ButtonGroup = styled("div", {
   gap: "8px",
   marginTop: "4px",
   width: "100%",
-  justifyContent: "flex-end",
-  alignItems: "center",
-  maxWidth: "400px",
-  marginLeft: "auto",
+  position: "relative",
+});
+
+const AccountButtonWrapper = styled("div", {
+  flex: 1,
+});
+
+const TossButtonWrapper = styled("div", {
+  position: "absolute",
+  right: "16px",
 });
 
 const TossButton = styled(Button, {
   background: "white",
   borderColor: "#E5E5E5",
-  padding: "4px 12px",
+  padding: "6px 12px",
+  height: "40px",
   display: "flex",
   alignItems: "center",
-  gap: "6px",
-  width: "100px",
-  justifyContent: "center",
+  gap: "8px",
   "&:hover": {
     background: "#f5f5f5 !important",
     borderColor: "#E5E5E5 !important",
   },
   "& span": {
     color: "#333333",
-    fontSize: "14px",
+    fontSize: "15px",
     fontWeight: "500",
   },
 });
@@ -110,7 +115,6 @@ const AccountButton = styled(Button, {
   padding: "4px 8px",
   color: "black",
   minWidth: "180px",
-  maxWidth: "240px",
   textAlign: "left",
 });
 
@@ -207,26 +211,30 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
       <VerticalInfo>
         <p style={{ color: color, marginBottom: 2 }}><b>{label}</b></p>
         <ButtonGroup>
-          <CopyToClipboard
-            text={accountNumber}
-            onCopy={() => message.success("계좌번호가 복사되었습니다.")}
-          >
-            <AccountButton type="text">
-              {accountNumber}
-            </AccountButton>
-          </CopyToClipboard>
-          {isMobile && (
-            <TossButton
-              onClick={() => handleTossPayment(name, accountNumber)}
+          <AccountButtonWrapper>
+            <CopyToClipboard
+              text={accountNumber}
+              onCopy={() => message.success("계좌번호가 복사되었습니다.")}
             >
-              <Image 
-                src={`${basePath}/images/toss.svg`}
-                alt="Toss Logo"
-                width={16}
-                height={16}
-              />
-              <span>Toss</span>
-            </TossButton>
+              <AccountButton type="text">
+                {accountNumber}
+              </AccountButton>
+            </CopyToClipboard>
+          </AccountButtonWrapper>
+          {isMobile && (
+            <TossButtonWrapper>
+              <TossButton
+                onClick={() => handleTossPayment(name, accountNumber)}
+              >
+                <Image 
+                  src={`${basePath}/images/toss.svg`}
+                  alt="Toss Logo"
+                  width={24}
+                  height={24}
+                />
+                <span>Toss</span>
+              </TossButton>
+            </TossButtonWrapper>
           )}
         </ButtonGroup>
         <p style={{ color: "black", marginBottom: 0 }}>{name}</p>
