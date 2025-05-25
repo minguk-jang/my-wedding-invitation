@@ -95,8 +95,9 @@ const TossButtonWrapper = styled("div", {
 const TossButton = styled(Button, {
   background: "white",
   borderColor: "#E5E5E5",
-  padding: "6px 12px",
-  height: "40px",
+  padding: "8px 16px",
+  height: "48px",
+  minWidth: "120px",
   display: "flex",
   alignItems: "center",
   gap: "8px",
@@ -106,7 +107,7 @@ const TossButton = styled(Button, {
   },
   "& span": {
     color: "#333333",
-    fontSize: "15px",
+    fontSize: "16px",
     fontWeight: "500",
   },
 });
@@ -116,6 +117,10 @@ const AccountButton = styled(Button, {
   color: "black",
   minWidth: "180px",
   textAlign: "left",
+  justifyContent: "flex-start",
+  "& span": {
+    textAlign: "left",
+  }
 });
 
 const TossLogo = styled(Image, {
@@ -217,7 +222,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               onCopy={() => message.success("계좌번호가 복사되었습니다.")}
             >
               <AccountButton type="text">
-                {accountNumber}
+                <span>{accountNumber}</span>
               </AccountButton>
             </CopyToClipboard>
           </AccountButtonWrapper>
@@ -229,8 +234,8 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
                 <Image 
                   src={`${basePath}/images/toss.svg`}
                   alt="Toss Logo"
-                  width={24}
-                  height={24}
+                  width={32}
+                  height={32}
                 />
                 <span>Toss</span>
               </TossButton>
