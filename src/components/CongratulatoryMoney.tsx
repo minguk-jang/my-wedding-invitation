@@ -97,6 +97,7 @@ const AccountButton = styled(Button, {
   justifyContent: "flex-start",
   border: "none",
   boxShadow: "none",
+  fontSize: "1.1rem",
   "&:hover, &:focus": {
     background: "transparent",
   },
@@ -228,16 +229,6 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
             <Description>계좌번호 클릭 시 클립보드에 복사됩니다.</Description>
           </Panel>
         </CustomCollapse>
-
-        {/* 안내 문구 */}
-        {"\n예식장 규정에 따라 화환 반입이 불가합니다.\n마음만 감사히 받겠습니다."
-          .split("\n")
-          .map((line, idx) => (
-            <Description key={idx} style={{ marginBottom: "16px" }}>
-              {line}
-              <br />
-            </Description>
-          ))}
       </motion.div>
     </div>
   );
