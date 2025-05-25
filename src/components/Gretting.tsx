@@ -73,7 +73,7 @@ const InfoText = styled("p", {
 });
 
 const InfoLabel = styled("span", {
-  color: "#666",
+  color: "#ff6b6b",
   marginRight: "0.5rem",
 });
 
