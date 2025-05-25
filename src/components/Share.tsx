@@ -132,6 +132,15 @@ export default function Share({ data }: ShareProps) {
             webUrl: GITHUB_PAGES_URL,
           },
         },
+        itemContent: {
+          profileText: "Wedding Invitation",
+          profileImageUrl: `${GITHUB_PAGES_URL}/images/fig1.jpeg`,
+        },
+        social: {
+          likeCount: 0,
+          commentCount: 0,
+          sharedCount: 0,
+        },
         buttons: [
           {
             title: "청첩장 열기",
@@ -141,13 +150,11 @@ export default function Share({ data }: ShareProps) {
             },
           },
         ],
-        calendar: {
+        scheduleInfo: {
           title: "장민국❤이주연 결혼식",
-          description: "장민국❤이주연의 결혼식에 초대합니다.",
-          location: "아펠가모 반포",
-          startTime: 1724460600, // 2025-08-23T12:30:00+09:00
-          endTime: 1724469600,   // 2025-08-23T15:00:00+09:00
-          scheduleId: "wedding"
+          schedule: "2025-08-23 12:30:00",
+          scheduleEndTime: "2025-08-23 15:00:00",
+          location: "아펠가모 반포"
         }
       });
 
