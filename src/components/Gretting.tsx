@@ -169,20 +169,27 @@ export default function Gretting({ data }: GrettingProps) {
         </PhotoContainer>
       </motion.div>
 
-      <WeddingInfo>
-        <InfoText>
-          <InfoLabel>일시</InfoLabel>
-          2025년 8월 23일 토요일 오후 12시 30분
-        </InfoText>
-        <InfoText>
-          <InfoLabel>장소</InfoLabel>
-          아펠가모 반포
-        </InfoText>
-        <InfoText>
-          <InfoLabel>주소</InfoLabel>
-          서울특별시 서초구 신반포로 23 효성빌딩 LL층
-        </InfoText>
-      </WeddingInfo>
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.5 }}
+        transition={{ duration: 1.2 }}
+      >
+        <WeddingInfo>
+          <InfoText>
+            <InfoLabel>일시</InfoLabel>
+            2025년 8월 23일 토요일 오후 12시 30분
+          </InfoText>
+          <InfoText>
+            <InfoLabel>장소</InfoLabel>
+            아펠가모 반포
+          </InfoText>
+          <InfoText>
+            <InfoLabel>주소</InfoLabel>
+            서울특별시 서초구 신반포로 23 효성빌딩 LL층
+          </InfoText>
+        </WeddingInfo>
+      </motion.div>
     </div>
   );
 }

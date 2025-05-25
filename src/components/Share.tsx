@@ -25,6 +25,7 @@ const ButtonGroup = styled("div", {
   gap: "16px",
   flexWrap: "wrap",
   marginTop: "24px",
+  marginBottom: "48px",
 });
 
 const KakaoTalkShareButton = styled(Button, {
@@ -73,6 +74,14 @@ const LinkShareButton = styled(Button, {
     borderColor: "#9fcbed !important",
     color: "#ffffff !important",
   },
+});
+
+const Copyright = styled("div", {
+  textAlign: "center",
+  padding: "24px 0",
+  color: "#666",
+  fontSize: "0.875rem",
+  borderTop: "1px solid rgba(0, 0, 0, 0.1)",
 });
 
 type ShareProps = {
@@ -171,6 +180,10 @@ export default function Share({ data }: ShareProps) {
           </LinkShareButton>
         </CopyToClipboard>
       </ButtonGroup>
+
+      <Copyright>
+        Copyright © 2025 Minguk Jang
+      </Copyright>
     </motion.div>
   );
 }
