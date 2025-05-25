@@ -81,10 +81,12 @@ const ButtonGroup = styled("div", {
   marginTop: "4px",
   width: "100%",
   position: "relative",
+  paddingLeft: "0",
 });
 
 const AccountButtonWrapper = styled("div", {
-  flex: 1,
+  flex: "0 1 auto",
+  marginLeft: "0",
 });
 
 const TossButtonWrapper = styled("div", {
@@ -92,36 +94,38 @@ const TossButtonWrapper = styled("div", {
   right: "16px",
 });
 
-// toss 버튼의 크기는 조금 더 작게 만들되, 버튼 내의 토스 아이콘은 위아래로는 가득차게.
+const AccountButton = styled(Button, {
+  padding: "4px 0",
+  color: "black",
+  minWidth: "unset",
+  textAlign: "left",
+  justifyContent: "flex-start",
+  border: "none",
+  boxShadow: "none",
+  "&:hover, &:focus": {
+    background: "transparent",
+  },
+});
+
 const TossButton = styled(Button, {
   background: "white",
   borderColor: "#E5E5E5",
   padding: "4px 8px",
   height: "40px",
-  // minWidth: "120px",
+  width: "90px",
   display: "flex",
   alignItems: "center",
-  gap: "8px",
+  justifyContent: "center",
+  gap: "6px",
   "&:hover": {
     background: "#f5f5f5 !important",
     borderColor: "#E5E5E5 !important",
   },
   "& span": {
     color: "#333333",
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "500",
   },
-});
-
-const AccountButton = styled(Button, {
-  padding: "4px 8px",
-  color: "black",
-  minWidth: "180px",
-  textAlign: "left",
-  justifyContent: "flex-start",
-  "& span": {
-    textAlign: "left",
-  }
 });
 
 const TossLogo = styled(Image, {
@@ -223,7 +227,7 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               onCopy={() => message.success("계좌번호가 복사되었습니다.")}
             >
               <AccountButton type="text">
-                <span>{accountNumber}</span>
+                {accountNumber}
               </AccountButton>
             </CopyToClipboard>
           </AccountButtonWrapper>
@@ -235,8 +239,9 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
                 <Image 
                   src={`${basePath}/images/toss.svg`}
                   alt="Toss Logo"
-                  width={32}
-                  height={32}
+                  width={36}
+                  height={36}
+                  style={{ margin: "-4px" }}
                 />
                 <span>Toss</span>
               </TossButton>
