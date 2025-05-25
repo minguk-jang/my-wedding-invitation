@@ -57,7 +57,7 @@ export default function Home() {
           <Gallery />
           <Location />
           <CongratulatoryMoney data={JsonData} />
-          <AddToCalendar />
+          {/* <AddToCalendar /> */}
           <Share data={JsonData} />
           {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
         </CenteredContainer>
