@@ -13,7 +13,7 @@ const weddingEvent: CalendarEvent = {
   description: '민국 ♥️ 주연의 결혼식에 초대합니다.',
   location: '아펠가모 반포',
   startDate: new Date('2025-08-23T12:30:00+09:00'),
-  endDate: new Date('2025-08-23T13:30:00+09:00'),
+  endDate: new Date('2025-08-23T15:00:00+09:00'),
 };
 
 export default function AddToCalendar() {
