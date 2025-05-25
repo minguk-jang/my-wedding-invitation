@@ -66,7 +66,7 @@ const WeddingInfo = styled("div", {
 
 const InfoText = styled("p", {
   margin: "0.5rem 0",
-  fontSize: "1.1rem",
+  fontSize: "1.0rem",
   lineHeight: "1.6",
   color: "#333",
   fontWeight: "500",
@@ -75,7 +75,7 @@ const InfoText = styled("p", {
 const InfoLabel = styled("span", {
   color: "#ff6b6b",
   marginRight: "0.5rem",
-  fontSize: "1.1rem",
+  fontSize: "1.0rem",
 });
 
 type GrettingProps = {
