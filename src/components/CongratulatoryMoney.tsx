@@ -92,12 +92,13 @@ const TossButtonWrapper = styled("div", {
   right: "16px",
 });
 
+// toss 버튼의 크기는 조금 더 작게 만들되, 버튼 내의 토스 아이콘은 위아래로는 가득차게.
 const TossButton = styled(Button, {
   background: "white",
   borderColor: "#E5E5E5",
-  padding: "8px 16px",
-  height: "48px",
-  minWidth: "120px",
+  padding: "4px 8px",
+  height: "40px",
+  // minWidth: "120px",
   display: "flex",
   alignItems: "center",
   gap: "8px",
