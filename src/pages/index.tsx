@@ -11,7 +11,6 @@ const Gallery = dynamic(() => import("@/components/Gallery"), { ssr: false });
 const Location = dynamic(() => import("@/components/Location"), { ssr: false });
 const CongratulatoryMoney = dynamic(() => import("@/components/CongratulatoryMoney"), { ssr: false });
 const Share = dynamic(() => import("@/components/Share"), { ssr: false });
-const AddToCalendar = dynamic(() => import("@/components/AddToCalendar"), { ssr: false });
 
 const Footer = styled("footer", {
   background: "#D7CCC8",
@@ -57,7 +56,6 @@ export default function Home() {
           <Gallery />
           <Location />
           <CongratulatoryMoney data={JsonData} />
-          <AddToCalendar />
           <Share data={JsonData} />
           {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
         </CenteredContainer>

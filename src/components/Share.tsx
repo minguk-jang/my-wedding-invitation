@@ -125,7 +125,7 @@ export default function Share({ data }: ShareProps) {
         objectType: "feed",
         content: {
           title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
-          description: "아래의 '청첩장 열기' 버튼을 눌러 읽어주세요🤵👰",
+          description: "2025년 8월 23일 토요일 낮 12시 30분\n아펠가모 반포",
           imageUrl: `${GITHUB_PAGES_URL}/images/fig1.jpeg`,
           link: {
             mobileWebUrl: GITHUB_PAGES_URL,
@@ -138,6 +138,13 @@ export default function Share({ data }: ShareProps) {
             link: {
               mobileWebUrl: GITHUB_PAGES_URL,
               webUrl: GITHUB_PAGES_URL,
+            },
+          },
+          {
+            title: "캘린더에 일정 추가",
+            link: {
+              mobileWebUrl: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('장민국❤이주연 결혼식')}&dates=20250823T033000Z/20250823T060000Z&details=${encodeURIComponent('장민국❤이주연의 결혼식에 초대합니다.')}&location=${encodeURIComponent('아펠가모 반포')}`,
+              webUrl: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('장민국❤이주연 결혼식')}&dates=20250823T033000Z/20250823T060000Z&details=${encodeURIComponent('장민국❤이주연의 결혼식에 초대합니다.')}&location=${encodeURIComponent('아펠가모 반포')}`,
             },
           },
         ],
