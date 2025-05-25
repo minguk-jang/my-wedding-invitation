@@ -79,14 +79,14 @@ const ButtonGroup = styled("div", {
   marginTop: "4px",
 });
 
-const KakaoShareButton = styled(Button, {
-  background: "#fee500",
-  borderColor: "#fee500",
-  color: "#181600",
+const TossButton = styled(Button, {
+  background: "#0064FF",
+  borderColor: "#0064FF",
+  color: "#ffffff",
   "&:hover": {
-    background: "#fcf07e !important",
-    borderColor: "#fcf07e !important",
-    color: "#181600 !important",
+    background: "#3C87FF !important",
+    borderColor: "#3C87FF !important",
+    color: "#ffffff !important",
   },
 });
 
@@ -134,10 +134,37 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  const handleKakaoPay = (name: string, accountNumber: string) => {
-    // 카카오톡 송금 URL 스킴으로 변경
-    const kakaoSendUrl = `kakaotalk://send?text=${encodeURIComponent(`${name}님께 축의금 보내기\n계좌번호: ${accountNumber}`)}`;
-    window.location.href = kakaoSendUrl;
+  const getBankInfo = (accountNumber: string): { code: string, cleanNumber: string } => {
+    const bankMap: { [key: string]: string } = {
+      '우체국': '071',
+      '새마을금고': '045',
+      '농협': '011',
+      '국민은행': '004',
+    };
+
+    // 계좌번호에서 은행명과 계좌번호 분리
+    const [bankName, ...rest] = accountNumber.split(' ');
+    const cleanNumber = rest.join('').replace(/-/g, '');
+    
+    return {
+      code: bankMap[bankName] || '',
+      cleanNumber: cleanNumber
+    };
+  };
+
+  const handleTossPayment = (name: string, accountNumber: string) => {
+    const { code: bankCode, cleanNumber } = getBankInfo(accountNumber);
+    
+    // 토스 송금 URL 스킴
+    const tossUrl = `supertoss://send?bank=${bankCode}&accountNo=${cleanNumber}&origin=wedding&amount=0&msg=${encodeURIComponent(`${name}님께 축의금`)}`;
+    const webUrl = `https://toss.me/${cleanNumber}`; // 웹 버전 URL
+    
+    // 앱이 설치되어 있지 않은 경우를 위한 처리
+    setTimeout(() => {
+      window.location.href = webUrl;
+    }, 500);
+    
+    window.location.href = tossUrl;
   };
 
   const renderAccountInfo = (
@@ -160,12 +187,12 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
             </Button>
           </CopyToClipboard>
           {isMobile && (
-            <KakaoShareButton
+            <TossButton
               size="small"
-              onClick={() => handleKakaoPay(name, accountNumber)}
+              onClick={() => handleTossPayment(name, accountNumber)}
             >
-              카카오톡으로 공유
-            </KakaoShareButton>
+              토스로 송금하기
+            </TossButton>
           )}
         </ButtonGroup>
         <p style={{ color: "black", marginBottom: 0 }}>{name}</p>
