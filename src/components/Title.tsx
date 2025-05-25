@@ -13,7 +13,7 @@ const Layout = styled("div", {
 
 // 배경 이미지
 const ImageBackground = styled("div", {
-  position: "fixed",
+  position: "absolute",
   top: 0,
   left: 0,
   width: "100%",
@@ -21,7 +21,6 @@ const ImageBackground = styled("div", {
   backgroundImage: "url('./images/fig4.jpeg')",
   backgroundSize: "cover",
   backgroundPosition: "center center",
-  backgroundAttachment: "fixed",
   opacity: 0.9,
   zIndex: 0,
 });
