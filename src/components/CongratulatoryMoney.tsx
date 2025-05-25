@@ -89,11 +89,6 @@ const AccountButtonWrapper = styled("div", {
   marginLeft: "0",
 });
 
-const TossButtonWrapper = styled("div", {
-  position: "absolute",
-  right: "16px",
-});
-
 const AccountButton = styled(Button, {
   padding: "4px 0",
   color: "black",
@@ -105,33 +100,6 @@ const AccountButton = styled(Button, {
   "&:hover, &:focus": {
     background: "transparent",
   },
-});
-
-const TossButton = styled(Button, {
-  background: "white",
-  borderColor: "#E5E5E5",
-  padding: "4px 8px",
-  height: "40px",
-  width: "90px",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  gap: "6px",
-  "&:hover": {
-    background: "#f5f5f5 !important",
-    borderColor: "#E5E5E5 !important",
-  },
-  "& span": {
-    color: "#333333",
-    fontSize: "15px",
-    fontWeight: "500",
-  },
-});
-
-const TossLogo = styled(Image, {
-  width: "16px",
-  height: "16px",
-  marginRight: "4px",
 });
 
 const HorizontalLine = styled("div", {
@@ -164,51 +132,6 @@ type CongratulatoryMoneyProps = {
 
 export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) {
   const { basePath } = useRouter();
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const checkMobile = () => {
-      const userAgent = window.navigator.userAgent;
-      const mobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-      setIsMobile(mobile);
-    };
-
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
-  const getBankInfo = (accountNumber: string): { code: string, cleanNumber: string } => {
-    const bankMap: { [key: string]: string } = {
-      '우체국': '071',
-      '새마을금고': '045',
-      '농협': '011',
-      '국민은행': '004',
-    };
-
-    const [bankName, ...rest] = accountNumber.split(' ');
-    const cleanNumber = rest.join('').replace(/-/g, '');
-    
-    return {
-      code: bankMap[bankName] || '',
-      cleanNumber: cleanNumber
-    };
-  };
-
-  const handleTossPayment = (name: string, accountNumber: string) => {
-    const { code: bankCode, cleanNumber } = getBankInfo(accountNumber);
-    
-    // 토스 송금 URL 스킴 - 메시지 형식 변경
-    const tossUrl = `supertoss://send?bank=${bankCode}&accountNo=${cleanNumber}&origin=wedding&amount=0`;
-    const webUrl = `https://toss.me/${cleanNumber}`; // 웹 버전 URL
-    
-    // 앱이 설치되어 있지 않은 경우를 위한 처리
-    setTimeout(() => {
-      window.location.href = webUrl;
-    }, 500);
-    
-    window.location.href = tossUrl;
-  };
 
   const renderAccountInfo = (
     name: string,
@@ -231,22 +154,6 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               </AccountButton>
             </CopyToClipboard>
           </AccountButtonWrapper>
-          {isMobile && (
-            <TossButtonWrapper>
-              <TossButton
-                onClick={() => handleTossPayment(name, accountNumber)}
-              >
-                <Image 
-                  src={`${basePath}/images/toss.svg`}
-                  alt="Toss Logo"
-                  width={36}
-                  height={36}
-                  style={{ margin: "-4px" }}
-                />
-                <span>Toss</span>
-              </TossButton>
-            </TossButtonWrapper>
-          )}
         </ButtonGroup>
         <p style={{ color: "black", marginBottom: 0 }}>{name}</p>
       </VerticalInfo>
