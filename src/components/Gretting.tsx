@@ -75,7 +75,7 @@ const InfoText = styled("p", {
 const InfoLabel = styled("span", {
   color: "#ff6b6b",
   marginRight: "0.5rem",
-  fontSize: "0.9rem",
+  fontSize: "0.9rem", 
 });
 
 type GrettingProps = {
