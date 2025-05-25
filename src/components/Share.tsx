@@ -143,8 +143,8 @@ export default function Share({ data }: ShareProps) {
           {
             title: "캘린더에 일정 추가",
             link: {
-              mobileWebUrl: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('장민국❤이주연 결혼식')}&dates=20250823T033000Z/20250823T060000Z&details=${encodeURIComponent('장민국❤이주연의 결혼식에 초대합니다.')}&location=${encodeURIComponent('아펠가모 반포')}`,
-              webUrl: `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('장민국❤이주연 결혼식')}&dates=20250823T033000Z/20250823T060000Z&details=${encodeURIComponent('장민국❤이주연의 결혼식에 초대합니다.')}&location=${encodeURIComponent('아펠가모 반포')}`,
+              mobileWebUrl: `${GITHUB_PAGES_URL}/calendar`,
+              webUrl: `${GITHUB_PAGES_URL}/calendar`,
             },
           },
         ],
