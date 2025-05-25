@@ -66,7 +66,7 @@ const WeddingInfo = styled("div", {
 
 const InfoText = styled("p", {
   margin: "0.5rem 0",
-  fontSize: "1.0rem",
+  fontSize: "0.9rem",
   lineHeight: "1.6",
   color: "#333",
   fontWeight: "500",
@@ -75,7 +75,7 @@ const InfoText = styled("p", {
 const InfoLabel = styled("span", {
   color: "#ff6b6b",
   marginRight: "0.5rem",
-  fontSize: "1.0rem",
+  fontSize: "0.9rem",
 });
 
 type GrettingProps = {
@@ -192,10 +192,10 @@ export default function Gretting({ data }: GrettingProps) {
         </WeddingInfo>
 
         <div style={{ marginTop: "2rem", textAlign: "center" }}>
-          <p style={{ fontSize: "1.125rem", lineHeight: 1.75, opacity: 0.65, margin: "8px 0" }}>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, opacity: 0.65, margin: "8px 0" }}>
             예식장 규정에 따라 화환 반입이 불가합니다.
           </p>
-          <p style={{ fontSize: "1.125rem", lineHeight: 1.75, opacity: 0.65, margin: "8px 0" }}>
+          <p style={{ fontSize: "1.1rem", lineHeight: 1.75, opacity: 0.65, margin: "8px 0" }}>
             마음만 감사히 받겠습니다.
           </p>
         </div>
