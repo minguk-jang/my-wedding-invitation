@@ -57,7 +57,7 @@ export default function Home() {
           <Location />
           <CongratulatoryMoney data={JsonData} />
           <Share data={JsonData} />
-          <Footer>Copyright © 2025 Minguk Jang</Footer>
+          {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
         </CenteredContainer>
       </main>
     </>
