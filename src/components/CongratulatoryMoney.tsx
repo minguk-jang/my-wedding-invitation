@@ -72,35 +72,45 @@ const VerticalInfo = styled("div", {
   alignItems: "flex-start",
   marginBottom: 16,
   paddingLeft: 12,
+  width: "100%",
 });
 
 const ButtonGroup = styled("div", {
   display: "flex",
   gap: "8px",
   marginTop: "4px",
+  width: "100%",
   justifyContent: "flex-end",
-  paddingRight: "16px",
+  alignItems: "center",
+  maxWidth: "400px",
+  marginLeft: "auto",
 });
 
 const TossButton = styled(Button, {
   background: "white",
   borderColor: "#E5E5E5",
-  width: "32px",
-  height: "32px",
-  padding: "0",
+  padding: "4px 12px",
   display: "flex",
   alignItems: "center",
+  gap: "6px",
+  width: "100px",
   justifyContent: "center",
   "&:hover": {
     background: "#f5f5f5 !important",
     borderColor: "#E5E5E5 !important",
+  },
+  "& span": {
+    color: "#333333",
+    fontSize: "14px",
+    fontWeight: "500",
   },
 });
 
 const AccountButton = styled(Button, {
   padding: "4px 8px",
   color: "black",
-  minWidth: "140px",
+  minWidth: "180px",
+  maxWidth: "240px",
   textAlign: "left",
 });
 
@@ -212,9 +222,10 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               <Image 
                 src={`${basePath}/images/toss.svg`}
                 alt="Toss Logo"
-                width={20}
-                height={20}
+                width={16}
+                height={16}
               />
+              <span>Toss</span>
             </TossButton>
           )}
         </ButtonGroup>
