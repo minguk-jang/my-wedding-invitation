@@ -140,14 +140,15 @@ export default function Share({ data }: ShareProps) {
               webUrl: GITHUB_PAGES_URL,
             },
           },
-          {
-            title: "캘린더에 일정 추가",
-            link: {
-              mobileWebUrl: `${GITHUB_PAGES_URL}/calendar`,
-              webUrl: `${GITHUB_PAGES_URL}/calendar`,
-            },
-          },
         ],
+        calendar: {
+          title: "장민국❤이주연 결혼식",
+          description: "장민국❤이주연의 결혼식에 초대합니다.",
+          location: "아펠가모 반포",
+          startTime: 1724460600, // 2025-08-23T12:30:00+09:00
+          endTime: 1724469600,   // 2025-08-23T15:00:00+09:00
+          scheduleId: "wedding"
+        }
       });
 
       message.success("카카오톡으로 청첩장을 공유합니다!");
