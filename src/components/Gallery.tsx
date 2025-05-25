@@ -295,39 +295,40 @@ const NavigationButton = styled("button", {
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
-  const { basePath } = useRouter(); // ✅ basePath 가져오기
+  const { basePath } = useRouter();
 
-  const flatImages = images;
+  // basePath를 포함한 전체 이미지 경로 배열 생성
+  const fullPathImages = images.map(src => `${basePath}${src}`);
 
-  const handleImageClick = (src: string) => {
-    setSelectedImage(src);
-    setCurrentImageIndex(flatImages.indexOf(src));
+  const handleImageClick = (index: number) => {
+    setSelectedImage(fullPathImages[index]);
+    setCurrentImageIndex(index);
   };
 
   const handlePrevImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const newIndex = (currentImageIndex - 1 + flatImages.length) % flatImages.length;
-    setSelectedImage(flatImages[newIndex]);
+    const newIndex = (currentImageIndex - 1 + fullPathImages.length) % fullPathImages.length;
+    setSelectedImage(fullPathImages[newIndex]);
     setCurrentImageIndex(newIndex);
   };
 
   const handleNextImage = (e: React.MouseEvent) => {
     e.stopPropagation();
-    const newIndex = (currentImageIndex + 1) % flatImages.length;
-    setSelectedImage(flatImages[newIndex]);
+    const newIndex = (currentImageIndex + 1) % fullPathImages.length;
+    setSelectedImage(fullPathImages[newIndex]);
     setCurrentImageIndex(newIndex);
   };
 
   const groupedImages = [];
-  for (let i = 0; i < flatImages.length; i += 2) {
-    groupedImages.push(flatImages.slice(i, i + 2));
+  for (let i = 0; i < images.length; i += 2) {
+    groupedImages.push(images.slice(i, i + 2));
   }
 
   return (
     <div
       style={{
         background: "#efebe9",
-        backgroundImage: `url(${basePath}/assets/GroovePaper.png)`, // ✅ 수정
+        backgroundImage: `url(${basePath}/assets/GroovePaper.png)`,
         backgroundRepeat: "repeat",
         width: "100%",
         paddingBottom: 72,
@@ -349,9 +350,9 @@ export default function Gallery() {
               {group.map((src, idx) => (
                 <StyledImage
                   key={idx}
-                  src={`${basePath}${src}`} // ✅ basePath 붙임
-                  alt={`image${groupIdx * 2 + idx + 1}`}
-                  onClick={() => handleImageClick(`${basePath}${src}`)} // ✅ 클릭 시에도 basePath 포함
+                  src={`${basePath}${src}`}
+                  alt={`웨딩 사진 ${groupIdx * 2 + idx + 1}`}
+                  onClick={() => handleImageClick(groupIdx * 2 + idx)}
                 />
               ))}
             </Column>
@@ -371,7 +372,7 @@ export default function Gallery() {
               </NavigationButton>
               <EnlargedImage
                 src={selectedImage}
-                alt="확대 이미지"
+                alt={`웨딩 사진 ${currentImageIndex + 1}`}
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
