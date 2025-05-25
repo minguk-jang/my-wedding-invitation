@@ -265,13 +265,62 @@ const EnlargedImage = styled(motion.img, {
   boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
 });
 
+const NavigationButton = styled("button", {
+  position: "absolute",
+  top: "50%",
+  transform: "translateY(-50%)",
+  background: "rgba(255, 255, 255, 0.8)",
+  border: "none",
+  borderRadius: "50%",
+  width: "40px",
+  height: "40px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  cursor: "pointer",
+  fontSize: "1.5rem",
+  color: "#333",
+  transition: "all 0.2s",
+  "&:hover": {
+    background: "rgba(255, 255, 255, 0.9)",
+  },
+  variants: {
+    position: {
+      left: { left: "20px" },
+      right: { right: "20px" },
+    },
+  },
+});
+
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
   const { basePath } = useRouter(); // ✅ basePath 가져오기
 
+  const flatImages = images;
+
+  const handleImageClick = (src: string) => {
+    setSelectedImage(src);
+    setCurrentImageIndex(flatImages.indexOf(src));
+  };
+
+  const handlePrevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex - 1 + flatImages.length) % flatImages.length;
+    setSelectedImage(flatImages[newIndex]);
+    setCurrentImageIndex(newIndex);
+  };
+
+  const handleNextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newIndex = (currentImageIndex + 1) % flatImages.length;
+    setSelectedImage(flatImages[newIndex]);
+    setCurrentImageIndex(newIndex);
+  };
+
   const groupedImages = [];
-  for (let i = 0; i < images.length; i += 2) {
-    groupedImages.push(images.slice(i, i + 2));
+  for (let i = 0; i < flatImages.length; i += 2) {
+    groupedImages.push(flatImages.slice(i, i + 2));
   }
 
   return (
@@ -302,7 +351,7 @@ export default function Gallery() {
                   key={idx}
                   src={`${basePath}${src}`} // ✅ basePath 붙임
                   alt={`image${groupIdx * 2 + idx + 1}`}
-                  onClick={() => setSelectedImage(`${basePath}${src}`)} // ✅ 클릭 시에도 basePath 포함
+                  onClick={() => handleImageClick(`${basePath}${src}`)} // ✅ 클릭 시에도 basePath 포함
                 />
               ))}
             </Column>
@@ -317,6 +366,9 @@ export default function Gallery() {
               exit={{ opacity: 0 }}
               onClick={() => setSelectedImage(null)}
             >
+              <NavigationButton position="left" onClick={handlePrevImage}>
+                ‹
+              </NavigationButton>
               <EnlargedImage
                 src={selectedImage}
                 alt="확대 이미지"
@@ -325,6 +377,9 @@ export default function Gallery() {
                 exit={{ scale: 0.8 }}
                 transition={{ duration: 0.3 }}
               />
+              <NavigationButton position="right" onClick={handleNextImage}>
+                ›
+              </NavigationButton>
             </Overlay>
           )}
         </AnimatePresence>
