@@ -140,13 +140,13 @@ export default function Share({ data }: ShareProps) {
               webUrl: GITHUB_PAGES_URL,
             },
           },
-          {
-            title: "캘린더에 일정 추가",
-            link: {
-              mobileWebUrl: "kakao://calendar/create/event?title=장민국❤이주연 결혼식&location=아펠가모 반포&start=20250823T123000&end=20250823T150000&allDay=false",
-              webUrl: "kakao://calendar/create/event?title=장민국❤이주연 결혼식&location=아펠가모 반포&start=20250823T123000&end=20250823T150000&allDay=false",
-            },
-          },
+          // {
+          //   title: "캘린더에 일정 추가",
+          //   link: {
+          //     mobileWebUrl: "kakao://calendar/create/event?title=장민국❤이주연 결혼식&location=아펠가모 반포&start=20250823T123000&end=20250823T150000&allDay=false",
+          //     webUrl: "kakao://calendar/create/event?title=장민국❤이주연 결혼식&location=아펠가모 반포&start=20250823T123000&end=20250823T150000&allDay=false",
+          //   },
+          // },
         ],
       });
 
