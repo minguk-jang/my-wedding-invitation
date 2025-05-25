@@ -4,6 +4,7 @@ import CopyToClipboard from "react-copy-to-clipboard";
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/router";
+import Image from "next/image";
 
 const { Panel } = Collapse;
 
@@ -83,11 +84,20 @@ const TossButton = styled(Button, {
   background: "#0064FF",
   borderColor: "#0064FF",
   color: "#ffffff",
+  display: "flex",
+  alignItems: "center",
+  gap: "4px",
   "&:hover": {
     background: "#3C87FF !important",
     borderColor: "#3C87FF !important",
     color: "#ffffff !important",
   },
+});
+
+const TossLogo = styled(Image, {
+  width: "16px",
+  height: "16px",
+  marginRight: "4px",
 });
 
 const HorizontalLine = styled("div", {
@@ -142,7 +152,6 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
       '국민은행': '004',
     };
 
-    // 계좌번호에서 은행명과 계좌번호 분리
     const [bankName, ...rest] = accountNumber.split(' ');
     const cleanNumber = rest.join('').replace(/-/g, '');
     
@@ -155,8 +164,8 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
   const handleTossPayment = (name: string, accountNumber: string) => {
     const { code: bankCode, cleanNumber } = getBankInfo(accountNumber);
     
-    // 토스 송금 URL 스킴
-    const tossUrl = `supertoss://send?bank=${bankCode}&accountNo=${cleanNumber}&origin=wedding&amount=0&msg=${encodeURIComponent(`${name}님께 축의금`)}`;
+    // 토스 송금 URL 스킴 - 메시지 형식 변경
+    const tossUrl = `supertoss://send?bank=${bankCode}&accountNo=${cleanNumber}&origin=wedding&amount=0`;
     const webUrl = `https://toss.me/${cleanNumber}`; // 웹 버전 URL
     
     // 앱이 설치되어 있지 않은 경우를 위한 처리
@@ -191,7 +200,13 @@ export default function CongratulatoryMoney({ data }: CongratulatoryMoneyProps) 
               size="small"
               onClick={() => handleTossPayment(name, accountNumber)}
             >
-              토스로 송금하기
+              <Image 
+                src={`${basePath}/images/toss.svg`}
+                alt="Toss Logo"
+                width={16}
+                height={16}
+              />
+              toss
             </TossButton>
           )}
         </ButtonGroup>
