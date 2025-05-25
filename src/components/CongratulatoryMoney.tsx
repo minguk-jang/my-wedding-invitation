@@ -97,7 +97,7 @@ const AccountButton = styled(Button, {
   justifyContent: "flex-start",
   border: "none",
   boxShadow: "none",
-  fontSize: "1.1rem",
+  fontSize: "1.125rem",
   "&:hover, &:focus": {
     background: "transparent",
   },
