@@ -111,7 +111,12 @@ const WeddingCalendar = () => {
         .react-calendar__tile abbr {
           font-size: 0.8rem;
           font-family: 'Nanum Myeongjo', serif;
-          color: #333333 !important; /* Add dark gray color for all dates */
+          color: #333333 !important; /* 평일 글자색 */
+        }
+
+        /* 주말 색상 설정 */
+        .react-calendar__month-view__days__day--weekend abbr {
+          color: #e41749 !important; /* 주말 글자색 */
         }
 
         .react-calendar__tile--neighboringMonth abbr {
