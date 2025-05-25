@@ -148,8 +148,8 @@ export default function Share({ data }: ShareProps) {
           //   },
           // },
         ],
-        imageWidth: 800,
-        imageHeight: 400,
+        // imageWidth: 800,
+        // imageHeight: 400,
       });
 
       message.success("카카오톡으로 청첩장을 공유합니다!");
