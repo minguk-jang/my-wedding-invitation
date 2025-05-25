@@ -140,13 +140,13 @@ export default function Share({ data }: ShareProps) {
               webUrl: GITHUB_PAGES_URL,
             },
           },
-          {
-            title: "캘린더에 일정 추가",
-            link: {
-              mobileWebUrl: `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:장민국❤이주연 결혼식%0ADTSTART;TZID=Asia/Seoul:20250823T123000%0ADTEND;TZID=Asia/Seoul:20250823T150000%0ADESCRIPTION:장민국❤이주연의 결혼식에 초대합니다%0ALOCATION:아펠가모 반포%0AEND:VEVENT%0AEND:VCALENDAR`,
-              webUrl: `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:장민국❤이주연 결혼식%0ADTSTART;TZID=Asia/Seoul:20250823T123000%0ADTEND;TZID=Asia/Seoul:20250823T150000%0ADESCRIPTION:장민국❤이주연의 결혼식에 초대합니다%0ALOCATION:아펠가모 반포%0AEND:VEVENT%0AEND:VCALENDAR`,
-            },
-          },
+          // {
+          //   title: "캘린더에 일정 추가",
+          //   link: {
+          //     mobileWebUrl: `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:장민국❤이주연 결혼식%0ADTSTART;TZID=Asia/Seoul:20250823T123000%0ADTEND;TZID=Asia/Seoul:20250823T150000%0ADESCRIPTION:장민국❤이주연의 결혼식에 초대합니다%0ALOCATION:아펠가모 반포%0AEND:VEVENT%0AEND:VCALENDAR`,
+          //     webUrl: `data:text/calendar;charset=utf8,BEGIN:VCALENDAR%0AVERSION:2.0%0ABEGIN:VEVENT%0ASUMMARY:장민국❤이주연 결혼식%0ADTSTART;TZID=Asia/Seoul:20250823T123000%0ADTEND;TZID=Asia/Seoul:20250823T150000%0ADESCRIPTION:장민국❤이주연의 결혼식에 초대합니다%0ALOCATION:아펠가모 반포%0AEND:VEVENT%0AEND:VCALENDAR`,
+          //   },
+          // },
         ],
       });
 
