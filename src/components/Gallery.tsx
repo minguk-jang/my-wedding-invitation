@@ -268,7 +268,7 @@ const Overlay = styled(motion.div, {
 const EnlargedImage = styled(motion.img, {
   maxWidth: "95vw",
   maxHeight: "85vh",
-  width: "100%",
+  // width: "100%",
   objectFit: "contain",
   borderRadius: "12px",
   cursor: "pointer",
