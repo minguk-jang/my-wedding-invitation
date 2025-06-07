@@ -92,7 +92,7 @@ export default function Home() {
                 }}
               />
             </div>
-            {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
+            <Footer>Copyright © 2025 Minguk Jang</Footer>
           </CenteredContainer>
         </Container>
       </main>

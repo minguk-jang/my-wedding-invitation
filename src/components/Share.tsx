@@ -190,9 +190,9 @@ export default function Share({ data }: ShareProps) {
         </CopyToClipboard>
       </ButtonGroup>
 
-      <Copyright>
+      {/* <Copyright>
         Copyright © 2025 Minguk Jang
-      </Copyright>
+      </Copyright> */}
     </motion.div>
   );
 }
