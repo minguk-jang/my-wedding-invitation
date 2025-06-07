@@ -73,6 +73,25 @@ export default function Home() {
             <CongratulatoryMoney data={JsonData} />
             {/* <AddToCalendar /> */}
             <Share data={JsonData} />
+            <div style={{
+              width: "100%",
+              marginTop: "2rem",
+              marginBottom: "3rem",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center"
+            }}>
+              <img 
+                src={`${basePath}/images/WeddingDay.png`}
+                alt="Wedding Day"
+                style={{
+                  width: "90%",
+                  maxWidth: "400px",
+                  height: "auto",
+                  borderRadius: "12px",
+                }}
+              />
+            </div>
             {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
           </CenteredContainer>
         </Container>
