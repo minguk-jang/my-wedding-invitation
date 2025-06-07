@@ -72,6 +72,9 @@ const LockButton = styled("button", {
   cursor: "pointer",
   boxShadow: "1px 1px 4px rgba(0,0,0,0.2)",
   transition: "all 0.2s ease",
+  display: "flex",
+  alignItems: "center",
+  gap: "0.4rem",
   "&:hover": {
     backgroundColor: "#f5f5f5",
   },
