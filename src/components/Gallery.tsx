@@ -282,10 +282,10 @@ const EnlargedImage = styled(motion.img, {
   "-moz-user-select": "none",
   "-ms-user-select": "none",
   "touch-action": "none",
-  "@media (max-width: 768px)": {
-    maxWidth: "98vw",
-    maxHeight: "80vh",
-  }
+  // "@media (max-width: 768px)": {
+  //   maxWidth: "98vw",
+  //   maxHeight: "80vh",
+  // }
 });
 
 const NavigationButton = styled("button", {
