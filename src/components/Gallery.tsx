@@ -276,16 +276,6 @@ const EnlargedImage = styled(motion.img, {
   WebkitUserSelect: "none",
   WebkitTouchCallout: "none",
   userSelect: "none",
-  "-webkit-touch-callout": "none",
-  "-webkit-user-select": "none",
-  "-khtml-user-select": "none",
-  "-moz-user-select": "none",
-  "-ms-user-select": "none",
-  "touch-action": "none",
-  "@media (max-width: 768px)": {
-    maxWidth: "98vw",
-    maxHeight: "80vh",
-  }
 });
 
 const NavigationButton = styled("button", {
@@ -352,12 +342,6 @@ export default function Gallery() {
     return false;
   };
 
-  // 터치 이벤트 핸들러 추가
-  const handleTouchStart = (e: React.TouchEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-  };
-
   const groupedImages = [];
   for (let i = 0; i < images.length; i += 2) {
     groupedImages.push(images.slice(i, i + 2));
@@ -393,7 +377,6 @@ export default function Gallery() {
                   alt={`웨딩 사진 ${groupIdx * 2 + idx + 1}`}
                   onClick={() => handleImageClick(groupIdx * 2 + idx)}
                   onContextMenu={preventDefault}
-                  onTouchStart={handleTouchStart}
                 />
               ))}
             </Column>
@@ -419,7 +402,6 @@ export default function Gallery() {
                 exit={{ scale: 0.8 }}
                 transition={{ duration: 0.3 }}
                 onContextMenu={preventDefault}
-                onTouchStart={handleTouchStart}
               />
               <NavigationButton position="right" onClick={handleNextImage}>
                 ›
