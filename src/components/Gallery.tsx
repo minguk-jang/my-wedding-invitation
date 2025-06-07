@@ -241,6 +241,9 @@ const StyledImage = styled("img", {
   borderRadius: "8px",
   cursor: "pointer",
   objectFit: "cover",
+  WebkitUserSelect: "none",  // 텍스트 선택 방지
+  WebkitTouchCallout: "none",  // iOS에서 길게 누르기 메뉴 방지
+  userSelect: "none",  // 텍스트 선택 방지
 });
 
 const Overlay = styled(motion.div, {
@@ -263,6 +266,9 @@ const EnlargedImage = styled(motion.img, {
   borderRadius: "12px",
   cursor: "pointer",
   boxShadow: "0 4px 20px rgba(0,0,0,0.3)",
+  WebkitUserSelect: "none",
+  WebkitTouchCallout: "none",
+  userSelect: "none",
 });
 
 const NavigationButton = styled("button", {
@@ -323,6 +329,12 @@ export default function Gallery() {
     setCurrentImageIndex(newIndex);
   };
 
+  const preventDefault = (e: React.MouseEvent | React.TouchEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    return false;
+  };
+
   const groupedImages = [];
   for (let i = 0; i < images.length; i += 2) {
     groupedImages.push(images.slice(i, i + 2));
@@ -357,6 +369,7 @@ export default function Gallery() {
                   src={`${basePath}${src}`}
                   alt={`웨딩 사진 ${groupIdx * 2 + idx + 1}`}
                   onClick={() => handleImageClick(groupIdx * 2 + idx)}
+                  onContextMenu={preventDefault}
                 />
               ))}
             </Column>
@@ -381,6 +394,7 @@ export default function Gallery() {
                 animate={{ scale: 1 }}
                 exit={{ scale: 0.8 }}
                 transition={{ duration: 0.3 }}
+                onContextMenu={preventDefault}
               />
               <NavigationButton position="right" onClick={handleNextImage}>
                 ›
