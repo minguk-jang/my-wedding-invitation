@@ -126,7 +126,7 @@ export default function Share({ data }: ShareProps) {
         content: {
           title: `${data?.groom?.name}❤${data?.bride?.name} 결혼식에 초대합니다`,
           description: "2025년 8월 23일 토요일 낮 12시 30분\n아펠가모 반포",
-          imageUrl: `${GITHUB_PAGES_URL}/gallery_images/06.jpeg`,
+          imageUrl: `${GITHUB_PAGES_URL}/gallery_images/06.jpg`,
           link: {
             mobileWebUrl: GITHUB_PAGES_URL,
             webUrl: GITHUB_PAGES_URL,
