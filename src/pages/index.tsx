@@ -3,6 +3,7 @@ import dynamic from "next/dynamic";
 import { styled } from "@stitches/react";
 import JsonData from "@/data.json";
 import { useRouter } from "next/router";
+import { motion } from "framer-motion";
 
 const Title = dynamic(() => import("@/components/Title"), { ssr: false });
 const Gretting = dynamic(() => import("@/components/Gretting"), { ssr: false });
@@ -73,15 +74,21 @@ export default function Home() {
             <CongratulatoryMoney data={JsonData} />
             {/* <AddToCalendar /> */}
             <Share data={JsonData} />
-            <div style={{
-              width: "100%",
-              marginTop: "2rem",
-              marginBottom: "3rem",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              padding: "0"
-            }}>
+            <motion.div
+              style={{
+                width: "100%",
+                marginTop: "2rem",
+                marginBottom: "3rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+                padding: "0"
+              }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 1.2 }}
+            >
               <img 
                 src={`${basePath}/images/WeddingDay.png`}
                 alt="Wedding Day"
@@ -92,7 +99,7 @@ export default function Home() {
                   borderRadius: "12px",
                 }}
               />
-            </div>
+            </motion.div>
             <Footer>Copyright © 2025 Minguk Jang</Footer>
           </CenteredContainer>
         </Container>
