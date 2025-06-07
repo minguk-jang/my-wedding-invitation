@@ -79,13 +79,14 @@ export default function Home() {
               marginBottom: "3rem",
               display: "flex",
               justifyContent: "center",
-              alignItems: "center"
+              alignItems: "center",
+              padding: "0"
             }}>
               <img 
                 src={`${basePath}/images/WeddingDay.png`}
                 alt="Wedding Day"
                 style={{
-                  width: "90%",
+                  width: "100%",
                   maxWidth: "400px",
                   height: "auto",
                   borderRadius: "12px",
