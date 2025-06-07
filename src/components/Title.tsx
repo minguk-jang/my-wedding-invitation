@@ -18,7 +18,7 @@ const ImageBackground = styled("div", {
   left: 0,
   width: "100%",
   height: "100%",
-  backgroundImage: "url('./gallery_images/KakaoTalk_Photo_2025-04-27-20-23-13 017.jpeg')", 
+  backgroundImage: "url('./gallery_images/01.jpg')", 
   backgroundSize: "cover",
   backgroundPosition: "center center",
   opacity: 0.9,
