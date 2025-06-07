@@ -101,9 +101,23 @@ const MusicButton = styled("button", {
   zIndex: 3,
   background: "transparent",
   border: "none",
-  fontSize: "1.75rem",
-  color: "white",
   cursor: "pointer",
+  width: "32px",
+  height: "32px",
+  padding: 0,
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  transition: "transform 0.2s ease",
+  "&:hover": {
+    transform: "scale(1.1)",
+  },
+});
+
+const SpeakerIcon = styled("img", {
+  width: "100%",
+  height: "100%",
+  objectFit: "contain",
 });
 
 const WeddingTitle = styled("div", {
@@ -251,7 +265,10 @@ export default function Title({ data }: TitleProps) {
           </TitleWrapper>
 
           <MusicButton onClick={toggleMusic}>
-            {isPlaying ? "🔊" : "🔇"}
+            <SpeakerIcon 
+              src={`${basePath}/images/${isPlaying ? 'speaker_on' : 'speaker_off'}.svg`}
+              alt={isPlaying ? "음악 끄기" : "음악 켜기"}
+            />
           </MusicButton>
         </>
       )}
