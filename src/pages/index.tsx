@@ -2,6 +2,7 @@ import Head from "next/head";
 import dynamic from "next/dynamic";
 import { styled } from "@stitches/react";
 import JsonData from "@/data.json";
+import { useRouter } from "next/router";
 
 const Title = dynamic(() => import("@/components/Title"), { ssr: false });
 const Gretting = dynamic(() => import("@/components/Gretting"), { ssr: false });
@@ -34,7 +35,19 @@ const CenteredContainer = styled("div", {
   },
 });
 
+const Container = styled("div", {
+  width: "100%",
+  minHeight: "100vh",
+  background: "#efebe9",
+  backgroundRepeat: "repeat",
+  touchAction: "auto",
+  overscrollBehavior: "auto",
+  WebkitOverflowScrolling: "touch",
+});
+
 export default function Home() {
+  const { basePath } = useRouter();
+
   return (
     <>
       <Head>
@@ -49,18 +62,20 @@ export default function Home() {
       </Head>
 
       <main>
-        <CenteredContainer>
-          <Title data={JsonData} />
-          <Gretting data={JsonData} />
-          <WeddingCalendar />
-          <DdaySection weddingDate={new Date("2025-08-23T12:30:00")} />
-          <Gallery />
-          <Location />
-          <CongratulatoryMoney data={JsonData} />
-          {/* <AddToCalendar /> */}
-          <Share data={JsonData} />
-          {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
-        </CenteredContainer>
+        <Container style={{ backgroundImage: `url(${basePath}/assets/GroovePaper.png)` }}>
+          <CenteredContainer>
+            <Title data={JsonData} />
+            <Gretting data={JsonData} />
+            <WeddingCalendar />
+            <DdaySection weddingDate={new Date("2025-08-23T12:30:00")} />
+            <Gallery />
+            <Location />
+            <CongratulatoryMoney data={JsonData} />
+            {/* <AddToCalendar /> */}
+            <Share data={JsonData} />
+            {/* <Footer>Copyright © 2025 Minguk Jang</Footer> */}
+          </CenteredContainer>
+        </Container>
       </main>
     </>
   );
