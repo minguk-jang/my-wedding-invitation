@@ -81,7 +81,7 @@ const getKakaoMapUrl = () => {
   // iOS에서는 kakaomap:// 스키마 사용
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
   if (isIOS) {
-    return "kakaomap://look?p=37.5043,127.0016";  // 아펠가모 반포 좌표
+    return "kakaomap://search?q=아펠가모반포";  // 검색어로 변경
   }
   // 안드로이드와 웹에서는 기존 URL 사용
   return "https://map.kakao.com/?q=아펠가모반포";
