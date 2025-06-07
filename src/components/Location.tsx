@@ -77,12 +77,27 @@ const LockButton = styled("button", {
   },
 });
 
+const getKakaoMapUrl = () => {
+  // iOS에서는 kakaomap:// 스키마 사용
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  if (isIOS) {
+    return "kakaomap://look?p=37.5043,127.0016";  // 아펠가모 반포 좌표
+  }
+  // 안드로이드와 웹에서는 기존 URL 사용
+  return "https://map.kakao.com/?q=아펠가모반포";
+};
+
 export default function Location() {
   const { basePath } = useRouter(); // ✅ basePath 가져오기
   const mapRef = useRef<HTMLDivElement>(null);
   const mapInstanceRef = useRef<any>(null);
   const [mapLoaded, setMapLoaded] = useState(false);
   const [isMapLocked, setIsMapLocked] = useState(true);
+  const [kakaoMapUrl, setKakaoMapUrl] = useState("");
+
+  useEffect(() => {
+    setKakaoMapUrl(getKakaoMapUrl());
+  }, []);
 
   useEffect(() => {
     if (!mapLoaded || !window.kakao || !mapRef.current) return;
@@ -153,7 +168,7 @@ export default function Location() {
         </div>
 
         <ButtonGroup>
-          <NaviButton href="https://map.kakao.com/?q=아펠가모반포" target="_blank">
+          <NaviButton href={kakaoMapUrl} target="_blank">
             <NaviIcon src={`${basePath}/images/kakao_navi.svg`} alt="카카오내비 아이콘" />
             카카오맵에서 보기
           </NaviButton>

@@ -274,6 +274,9 @@ const NavigationButton = styled("button", {
   borderRadius: "50%",
   width: "40px",
   height: "40px",
+  minWidth: "40px",
+  maxWidth: "40px",
+  padding: 0,
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
@@ -281,6 +284,7 @@ const NavigationButton = styled("button", {
   fontSize: "1.5rem",
   color: "#333",
   transition: "all 0.2s",
+  WebkitAppearance: "none",
   "&:hover": {
     background: "rgba(255, 255, 255, 0.9)",
   },
