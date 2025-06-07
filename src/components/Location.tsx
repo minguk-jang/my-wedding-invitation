@@ -77,6 +77,12 @@ const LockButton = styled("button", {
   },
 });
 
+const LockIcon = styled("img", {
+  width: "1rem",
+  height: "1rem",
+  objectFit: "contain",
+});
+
 const getKakaoMapUrl = () => {
   // iOS에서는 kakaomap:// 스키마 사용
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
@@ -162,7 +168,11 @@ export default function Location() {
 
         <div style={{ position: "relative" }}>
           <LockButton onClick={toggleMapLock}>
-            {isMapLocked ? "🔒 잠금" : "🔓 해제"}
+            <LockIcon 
+              src={`${basePath}/images/${isMapLocked ? 'lock' : 'unlock'}.svg`} 
+              alt={isMapLocked ? "잠금" : "해제"} 
+            />
+            {isMapLocked ? "잠금" : "해제"}
           </LockButton>
           <MapContainer ref={mapRef} />
         </div>
