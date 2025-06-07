@@ -1,5 +1,13 @@
 export const images = [
-  "/gallery_images/1.jpg",
+  "/gallery_images/01.jpg",
+  "/gallery_images/02.jpg",
+  "/gallery_images/03.jpg",
+  "/gallery_images/04.jpg",
+  "/gallery_images/05.jpg",
+  "/gallery_images/06.jpg",
+  "/gallery_images/07.jpg",
+  "/gallery_images/08.jpg",
+  "/gallery_images/09.jpg",
   "/gallery_images/10.jpg",
   "/gallery_images/11.jpg",
   "/gallery_images/12.jpg",
@@ -10,13 +18,5 @@ export const images = [
   "/gallery_images/17.jpg",
   "/gallery_images/18.jpg",
   "/gallery_images/19.jpg",
-  "/gallery_images/2.jpg",
-  "/gallery_images/20.jpg",
-  "/gallery_images/3.jpg",
-  "/gallery_images/4.jpg",
-  "/gallery_images/5.jpg",
-  "/gallery_images/6.jpg",
-  "/gallery_images/7.jpg",
-  "/gallery_images/8.jpg",
-  "/gallery_images/9.jpg"
+  "/gallery_images/20.jpg"
 ];
