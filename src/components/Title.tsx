@@ -213,7 +213,7 @@ export default function Title({ data }: TitleProps) {
   const { basePath } = useRouter(); // ✅ basePath 가져오기
 
   useEffect(() => {
-    audioRef.current = new Audio(`${basePath}/music/hong.mp3`);
+    audioRef.current = new Audio(`${basePath}/music/two_birds.mp3`);
     audioRef.current.loop = true;
 
     return () => {
