@@ -235,6 +235,7 @@ const Column = styled("div", {
   width: "45%",
 });
 
+const newLocal = "none";
 const StyledImage = styled("img", {
   width: "100%",
   height: "300px",
@@ -242,14 +243,14 @@ const StyledImage = styled("img", {
   cursor: "pointer",
   objectFit: "cover",
   // WebkitUserSelect: "none",
-  WebkitTouchCallout: "none",
+  // WebkitTouchCallout: "none",
   // userSelect: "none",
-  "-webkit-touch-callout": "none",
+  // "-webkit-touch-callout": "none",
   // "-webkit-user-select": "none",
   // "-khtml-user-select": "none",
   // "-moz-user-select": "none",
   // "-ms-user-select": "none",
-  "touch-action": "none",
+  // "touch-actionnewLocalne",
 });
 
 const Overlay = styled(motion.div, {
@@ -393,7 +394,7 @@ export default function Gallery() {
                   alt={`웨딩 사진 ${groupIdx * 2 + idx + 1}`}
                   onClick={() => handleImageClick(groupIdx * 2 + idx)}
                   onContextMenu={preventDefault}
-                  onTouchStart={handleTouchStart}
+                  // onTouchStart={handleTouchStart}
                 />
               ))}
             </Column>
