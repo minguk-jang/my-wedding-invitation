@@ -243,12 +243,12 @@ const StyledImage = styled("img", {
   objectFit: "cover",
   // WebkitUserSelect: "none",
   WebkitTouchCallout: "none",
-  userSelect: "none",
+  // userSelect: "none",
   "-webkit-touch-callout": "none",
   // "-webkit-user-select": "none",
-  "-khtml-user-select": "none",
-  "-moz-user-select": "none",
-  "-ms-user-select": "none",
+  // "-khtml-user-select": "none",
+  // "-moz-user-select": "none",
+  // "-ms-user-select": "none",
   "touch-action": "none",
 });
 
